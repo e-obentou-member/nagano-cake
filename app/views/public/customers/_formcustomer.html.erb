@@ -1,0 +1,45 @@
+
+<!--ここから-->
+
+
+  <tboody>
+     <tr>
+       <th>名前</th>
+       <th><%= f.text_field :first_name, class: "form-control" %></th>
+      <th><%= f.text_field :last_name, class: "form-control" %></th>
+     </tr>
+
+   <tr>
+       <th>フリガナ</th>
+       <th><%=  f.text_field :first_name_kana, class: "form-control" %></th>
+      <th><%=  f.text_field :last_name_kana, class: "form-control" %></th>
+     </tr>
+
+   <tr>
+       <th>郵便番号（ハイフンなし）</th>
+       <th><%=  f.text_field :postcode, class: "form-control" %></th>
+   
+     </tr>
+
+   <tr>
+       <th>住所</th>
+       <th><%=  f.text_area :address, class: "form-control" %></th>
+     </tr>
+
+   <tr>
+       <th>電話番号（ハイフンなし）</th>
+       <th><%=  f.text_field :telephone_number, class: "form-control" %></th>
+     </tr>
+
+   <tr>
+       <th>メールアドレス</th>
+       <th><%=  f.text_field :email, class: "form-control" %></th>
+      <th><%= %></th>
+     </tr>
+
+
+<!--ここまでrender範囲-->
+
+
+
+
