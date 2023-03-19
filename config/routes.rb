@@ -1,69 +1,42 @@
 Rails.application.routes.draw do
-    
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
-  namespace :public do
-    get 'deliveries/index'
-    get 'deliveries/show'
-    get 'deliveries/edit'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/index'
-    get 'orders/show'
-    get 'orders/check'
-    get 'orders/done'
-  end
-  namespace :public do
-    get 'cart_items/index'
-    get 'cart_items/destroy_all'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/check'
-    get 'customers/reject_customers'
-  end
-  namespace :public do
-    get 'menus/index'
-    get 'menus/show'
-  end
-  namespace :public do
-    get 'homes/top'
+
+  scope module: :public do
+    root to: 'homes#top'
     get 'homes/about'
+    resources:menus, only: [:index, :show]
+    resources:registrations, only: [:show, :edit]
+    # resources:sessions, only: [:new, :create, :destroy]
+    resources:customers, only: [:show, :edit, :update]
+    get 'edit_check'
+    post 'reject_customer'
+    resources:delivelies,only: [:index, :edit, :update]
   end
-  namespace :admin do
-    get 'orders/show'
+
+  scope module: :admin do
+    # resources:sessions,only:[:new, :create, :destroy]
+    # get "homes/top"
+    root to: 'homes#top'
+    resources:menus,only:[:new, :index, :show, :edit, :update]
+    resources:genres,only: [:index, :create, :edit, :update]
+    resources:customer,only:[:index, :show, :edit, :update]
+    resources:orders,only:[:show, :update]
+    resources:oder_details,only:[:update]
   end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
-  namespace :admin do
-    get 'menus/new'
-    get 'menus/index'
-    get 'menus/show'
-    get 'menus/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
+
+
    # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers, controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
   }
-    
+
   #devise_for :customers
   #devise_for :admins
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
