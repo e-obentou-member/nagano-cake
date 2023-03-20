@@ -35,7 +35,7 @@
 
    <tr>
     <div class="field">
-       <th><%= f.label :電話番号（ハイフンなし）） %></th>
+       <th><%= f.label :電話番号（ハイフンなし） %></th>
        <th><%=  f.text_field :telephone_number, class: "form-control" %></th>
      </div>
      </tr>
@@ -50,8 +50,8 @@
     </tr>
     
     <tr>
-      <th><%= %></th>
-      <th></th>
+      <th><%= f.submit '編集内容を保存する', class: "btn btn-success" %></th>
+      <th><%= f.submit '退会する', class: "btn btn-danger"%></th>
     </tr>
 
 </tbody>
