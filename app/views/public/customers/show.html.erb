@@ -1,2 +1,26 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<h1>マイページ</h1>
+<table class="table table-bordered">
+  <thead>
+
+   <tr>
+         <th>郵便番号</th>
+         <th>住所</th>
+         <th>宛名</th>
+         <th>　</th>
+
+   </tr>
+  </thead>
+  <tbody>
+
+        <tr>
+               <td><%= @customer.postcode %></td>
+               <td><%= @customer.address %></td>
+               <td><%= @customer.first_name %></td>
+               <td>
+                     
+               </td>
+
+ </tbody>
+
+
+</table>
