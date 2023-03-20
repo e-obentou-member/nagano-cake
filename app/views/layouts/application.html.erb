@@ -17,12 +17,12 @@
         <% if customer_signed_in? %>
         <!--会員がログインしている場合-->
          <li>
-           <%= link_to user_path(current_customer), class: 'nav-link text-light' do %>
+           <%= link_to customer_path(current_customer), class: 'nav-link text-light' do %>
              <i class="fas fa-user"></i> マイページ
            <% end %>
          </li>
          <li>
-           <%= link_to menues_path, class: 'nav-link text-light' do %>
+           <%= link_to menus_path, class: 'nav-link text-light' do %>
              <i class="fas fa-link"></i> 商品一覧
            <% end %>
          </li>
