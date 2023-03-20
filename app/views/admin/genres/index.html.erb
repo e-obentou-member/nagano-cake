@@ -1,27 +1,42 @@
-<h2>ジャンル一覧・追加</h2>
- <%= form_with model: @genre, url:genres_path, method: :post, local: true  do |f| %>
-  <div class="form-group">
-    <%=f.label :ジャンル名 %>
-    <%=f.text_field :name, class: 'form-control', placeholder:"ジャンル名" %>
-    <%=f.submit '新規登録', class: 'btn btn-success'%>
+<div class="container px-5 px-sm-0">
+  <h4>ジャンル一覧・追加</h4>
+    <%= form_with model: @genre, url: genres_path, method: :post, local: true do |f| %>
+    <div>
+      <%=f.label :ジャンル名 %>
+    </div>
+    <table>
+    <td>
+        <%=f.text_field :name, class: 'form-control', placeholder: "ジャンル名" %>
+      </td>
+      <td>
+        <%=f.submit '新規登録', class: 'btn btn-success'%>
+      </td>
+    </table>
+   <% end %>
+
+ <div class="row">
+   <div class="col-md-4 offset-md-1">
+
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>ジャンル</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @genres.each do |genre| %>
+         <tr>
+           <td><%= genre.name %></td>
+           <td>
+             <%= link_to "編集する", edit_genre_path(genre.id),  class: 'btn btn-success' %>
+           </td>
+         </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
   </div>
-
-
-<table class="table table-hover table-inverse">
-  <thead>
-    <tr>
-      <th>ジャンル</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @genres.each do |genre| %>
-     <tr>
-       <td><%= genre.name %></td>
-       <td>
-         <%= link_to "編集する", genres_path(genre.id), method: :post, class: 'btn btn-success' %>
-       </td>
-     </tr>
-    <% end %>
-  </tbody>
-</table>
+</div>
