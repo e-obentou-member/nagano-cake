@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     resources:customers, only: [:show, :edit, :update]
     get 'edit_check'
     post 'reject_customer'
+    resources:cart_items, only: [:index, :update, :destroy, :destroy_all]
     resources:delivelies,only: [:index, :edit, :update]
   end
 

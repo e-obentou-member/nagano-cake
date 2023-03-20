@@ -7,63 +7,79 @@
 <table class="table">
 
  <tboody>
-   
-     <tr> <div class="field">
+
+    <tr>
+    <div class="field">
        <th><%= f.label :名前 %></th>
-       <th>（姓）<%= f.text_field :first_name, class: "form-control" %></th>
+       <th>（姓）<%= f.text_field :first_name, class: "form-control", autofocus: true %></th>
       <th>（名）<%= f.text_field :last_name, class: "form-control" %></th>
-     </div>
+    </div>
       </tr>
 
-   <tr> <div class="field">
+   <tr>
+   <div class="field">
        <th><%= f.label :フリガナ %></th>
        <th>（セイ）<%=  f.text_field :first_name_kana, class: "form-control" %></th>
       <th>（メイ）<%= f.text_field :last_name_kana, class: "form-control" %></th>
        </div>
      </tr>
 
-   <tr> <div class="field">
+   <tr>
+   <div class="field">
        <th><%= f.label :郵便番号（ハイフンなし） %></th>
        <th><%=  f.text_field :postcode, class: "form-control", autocomplete: "postcode", id: "customer_postcode" %></th>
         </div>
      </tr>
-
+ <!--入るとエラーJpPrefecture::Prefecture.all, :code, :name, -->
    <tr>
-        <div class="field">
+    <div class="field">
        <th><%= f.label :住所 %></th>
-       <th><%=  f.text_area :address, class: "form-control", JpPrefecture::Prefecture.all, :code, :name, autocomplete: "address", id: "customer_address" %></th>
+       <th><%=  f.text_area :address, class: "form-control",autocomplete: "address", id: "customer_address" %></th>
     </div>
      </tr>
 
    <tr>
-        <div class="field">
-       <th><%= f.label :電話番号（ハイフンなし） %></th>
+    <div class="field">
+       <th><%= f.label :電話番号（ハイフンなし）） %></th>
        <th><%=  f.text_field :telephone_number, class: "form-control" %></th>
      </div>
      </tr>
 
-  
-     
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %>
+     <tr>
+    <div class="field">
+    <th><%= f.label :email %></th>
+    <th><%= f.email_field :email, autocomplete: "email", class: "form-control" %>
+   </th>
+    </div>
+    </tr>
+
+     <tr>
+    <div class="field">
+    <th><%= f.label :password %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    (<%= @minimum_password_length %> characters minimum)
+    <% end %></th>
+    <th><%= f.password_field :password, autocomplete: "new-password" %>
+    </th>
+    </div>
+    </tr>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+     <tr>
+     <div class="field">
+    <th><%= f.label :password_confirmation %></th>
+    <th><%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+     </th>
+     </div>
+     </tr>
+     <tr>
+       <th>
+        <div class="actions">
+          <%= f.submit "新規登録", class: "btn btn-success" %>
+        </div>
+      </th>
+     </tr>
 </table>
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+
 <% end %>
-<%#= render "public/shared/links" %>
+<%= render "public/shared/links" %>
