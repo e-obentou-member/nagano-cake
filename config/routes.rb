@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  
+
   # デバイスの記述がかぶっていたからルートのエラーが出ていたので
   # コメントアウトしました。
   # また、デバイス関連のるーとが下だと、カスタマーのところでかぶっちゃうから
   # 上に移動しました。
-  
+
  # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -25,10 +25,13 @@ Rails.application.routes.draw do
     # resources:registrations, only: [:new, :edit]
     # resources:sessions, only: [:new, :create, :destroy]
     resources:customers, only: [:show, :edit, :update]
-    get 'edit_check'
-    post 'reject_customer'
+    get 'customers/check'
+    patch 'customers/withdraw'
     resources:cart_items, only: [:index, :update, :destroy, :destroy_all]
-    resources:delivelies,only: [:index, :edit, :update]
+    resources:orders,only: [:new,:create,:index,:show]
+    post 'orders/check'
+    get 'orders/done'
+    resources:deliveries,only: [:index, :edit, :update, :update, :destroy]
   end
 
   scope module: :admin do
@@ -37,7 +40,7 @@ Rails.application.routes.draw do
     # root to: 'homes#top'
     resources:menus,only:[:new, :index, :show, :edit, :update]
     resources:genres,only: [:index, :create, :edit, :update]
-    resources:customer,only:[:index, :show, :edit, :update]
+    resources:customers,only:[:index, :show, :edit, :update]
     resources:orders,only:[:show, :update]
     resources:oder_details,only:[:update]
   end
