@@ -1,2 +1,35 @@
-<h1>Admin::Menus#new</h1>
-<p>Find me in app/views/admin/menus/new.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+   <div class="col-md-4 offset-md-1">
+    <h4>商品新規登録</h4>
+      <%= form_with model: @menu, url: genres_path, method: :post, local: true do |f| %>
+       <label for="inputImage">商品画像</label>
+        <%= f.file_field :image, placeholder: "プロフィール画像", accept: "image/*" %>
+      <table>
+       <td>
+         <%= f.label :商品名 %>
+         <%= f.text_field :name, class: "form-control", placeholder: "商品名" %>
+        </td>
+        <td>
+          <%= f.label :商品説明 %>
+          <%= f.text_area :info, class: "btn btn-primary btn-lg", placeholder: "ここに説明文を記述します" %>
+        </td>
+        <td>
+          <%= f.label :ジャンル %>
+          <%=  %>
+        </td>
+        <td>
+          <%= f.label :税抜価格 %>
+          <%= f.text_field :non_tax_price, class: "form-control", placeholder: "商品名" %>
+        </td>
+        <td>
+          <%=f.submit '新規登録', class: 'btn btn-success'%>
+        </td>
+      </table>
+     <% end %>
+    </div>
+  </div>
+</div>
+
+    
+    
