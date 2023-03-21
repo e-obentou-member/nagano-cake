@@ -1,2 +1,39 @@
-<h1>Admin::Menus#edit</h1>
-<p>Find me in app/views/admin/menus/edit.html.erb</p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+   <div class="col-md-4 offset-md-1">
+    <h4>商品新規登録</h4>
+      <%= form_with model: @menu, local: true do |f| %>
+       <label for="inputImage">商品画像</label>
+        <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*" %>
+      <table>
+       <td>
+         <%= f.label :商品名 %>
+         <%= f.text_field :name, class: "form-control" %>
+        </td>
+        <td>
+          <%= f.label :商品説明 %>
+          <%= f.text_area :info, class: "btn btn-primary btn-lg" %>
+        </td>
+        <td>
+          <%= f.label :ジャンル %>
+          <%= f.hidden_field :genre, :value => "--選択してください--" %>
+        </td>
+        <td>
+          <%= f.label :税抜価格 %>
+          <%= f.text_field :non_tax_price, class: "form-control" %>円
+        </td>
+        <td>
+          <%= f.label :販売ステータス %>
+          <%= f.radio_button :is_sale, :true %>
+          <%= f.label :is_sale, "販売中", {value: :true, style: "display: inline-block;"} %>
+          <%= f.radio_button :status, :false %>
+          <%= f.label :is_sale, "販売停止中", {value: :false, style: "display: inline-block;"} %>
+        </td>
+        <td>
+          <%=f.submit '変更を保存', class: 'btn btn-success'%>
+        </td>
+      </table>
+     <% end %>
+    </div>
+  </div>
+</div>

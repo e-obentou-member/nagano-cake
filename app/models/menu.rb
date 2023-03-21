@@ -15,4 +15,9 @@ class Menu < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
+
+  def tax_in_price
+     (self.non_tax_price * 1.1).round
+  end
+
 end

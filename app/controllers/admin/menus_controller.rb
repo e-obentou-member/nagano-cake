@@ -10,7 +10,7 @@ class Admin::MenusController < ApplicationController
   def create
     @menu = Menu.new(menu_params)
     @menu.save
-    redirect_to menu_path
+    redirect_to admin_menu_path(menu.id)
   end
 
   def show
@@ -23,8 +23,8 @@ class Admin::MenusController < ApplicationController
 
   def update
     @menu = Menu.find(params[:id])
-    @menu.update
-    redirect_to menu_path(@menu.id)
+    @menu.update(menu_params)
+    redirect_to adminmenu_path(@menu.id)
   end
 
   private
