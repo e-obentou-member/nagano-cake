@@ -10,10 +10,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
-    <tr></tr>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= "#{@id}" %></td>
+        <td><%= customer.first_name %><%= customer.last_name %></td>
+        <td><%= customer.email %></td>
+        <td></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 <!--ページネーション-->
