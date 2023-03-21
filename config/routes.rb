@@ -24,7 +24,9 @@ Rails.application.routes.draw do
     resources:menus, only: [:index, :show]
     # resources:registrations, only: [:new, :edit]
     # resources:sessions, only: [:new, :create, :destroy]
-    resources:customers, only: [:show, :edit, :update]
+    get 'customers/mypage/edit' => 'customers#edit'
+    patch 'customers/mypage' => 'customers#update'
+    get 'customers/mypage' => 'customers#show'
     get 'customers/check'
     patch 'customers/withdraw'
     resources:cart_items, only: [:index, :update, :destroy, :destroy_all]
@@ -34,7 +36,7 @@ Rails.application.routes.draw do
     resources:deliveries,only: [:index, :edit, :update, :update, :destroy]
   end
 
-  scope module: :admin do
+  namespace :admin do
     # resources:sessions,only:[:new, :create, :destroy]
     get "homes/top"
     # root to: 'homes#top'
