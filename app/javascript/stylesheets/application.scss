@@ -1,2 +1,9 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.top-image {
+  // background-image: url("<%= asset_path('no_image.jpg') %>");
+  background:url('assets/no_image.jpg');
+  color: red;
+  height: 100px;
+}

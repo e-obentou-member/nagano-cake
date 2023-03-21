@@ -1,6 +1,6 @@
 class Public::MenusController < ApplicationController
   def index
-    # @menus = Menu.all
+    @menus = Menu.all
     # @menus = Menu.page(params[:page]).per(8)
   end
 
@@ -9,3 +9,4 @@ class Public::MenusController < ApplicationController
     # @quantity = params[:quantity] || 1
   end
 end
+
