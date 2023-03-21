@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     # resources:sessions,only:[:new, :create, :destroy]
     get "homes/top"
     # root to: 'homes#top'
-    resources:menus,only:[:new, :index, :show, :edit, :update]
+    resources:menus,only:[:new, :index, :create, :show, :edit, :update]
     resources:genres,only: [:index, :create, :edit, :update]
     resources:customers,only:[:index, :show, :edit, :update]
     resources:orders,only:[:show, :update]

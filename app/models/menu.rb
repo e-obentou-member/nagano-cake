@@ -4,7 +4,7 @@ class Menu < ApplicationRecord
   has_many :order_details
   belongs_to :genre
 
-  belongs_to :top_page
+  #belongs_to :top_page
 
   has_one_attached :image
 

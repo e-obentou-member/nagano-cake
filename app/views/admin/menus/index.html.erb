@@ -17,7 +17,7 @@
       <% @menus.each do |menu| %>
         <tr>
          <td><%= menu.id %></td>
-         <td><%= menu.name %></td>
+         <td><%= link_to menu.name, admin_menu_path(menu.id) %></td>
          <td><%= menu.non_tax_price %></td>
          <td><%= menu.genre.name %></td>
          <td><%= menu.is_sale %></td>

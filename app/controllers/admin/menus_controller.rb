@@ -9,8 +9,8 @@ class Admin::MenusController < ApplicationController
 
   def create
     @menu = Menu.new(menu_params)
-    @menu.save
-    redirect_to admin_menu_path(menu.id)
+    @menu.save!
+    redirect_to admin_menus_path
   end
 
   def show
@@ -30,7 +30,7 @@ class Admin::MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:name, :info, :tax_in_price, :non_taxx_price, :is_sale)
+    params.require(:menu).permit(:genre_id, :name, :info,:non_tax_price, :is_sale, :image)
   end
 
 end
