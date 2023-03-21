@@ -1,30 +1,31 @@
 class Public::CustomersController < ApplicationController
   def show
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
-  
+
   def edit
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
-  
+
   def update
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
       if @customer.update(customer_params)
-        redirect_to customer_path(@customer.id)
+        redirect_to customers_mypage_path
       else
           render :edit
       end
   end
 
   def check
+     @customer = current_customer
   end
 
   def reject_customers
   end
-  
+
     private
-    
-    
+
+
   def customer_params
     params.require(:customer).permit(:first_name, :first_name_kana, :last_name, :last_name_kana, :postcode, :address, :telephone_number, :email) #保存を許すカラム
   end
