@@ -1,18 +1,18 @@
 class Admin::CustomersController < ApplicationController
   def index
-    @customers = Customer.all
+    @customers = Customer.all.page(params[:page]).per(1)
   end
 
   def show
     @customers = Customer.all
-
+    @customer = Customer.find(params[:id])
   end
 
   def edit
     @customers = Customer.all
     @customer = Customer.find(params[:id])
   end
-  
+
   def update
     @customer = Customer.find(params[:id])
     if @customer.save
@@ -23,5 +23,5 @@ class Admin::CustomersController < ApplicationController
       render :show
     end
   end
-  
+
 end
