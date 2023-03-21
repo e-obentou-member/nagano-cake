@@ -15,7 +15,9 @@
         <td><%= customer.id %></td>
         <td>
           <!--名前をリンクに変更-->
-          <%= customer.first_name %><%= customer.last_name %>
+          <%= link_to admin_customer_path(customer.id) do %>
+            <%= customer.first_name %><%= customer.last_name %>
+          <% end %>
         </td>
         <td><%= customer.email %></td>
         <td>
