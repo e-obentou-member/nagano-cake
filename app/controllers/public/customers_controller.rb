@@ -20,7 +20,7 @@ class Public::CustomersController < ApplicationController
      @customer = current_customer
   end
 
-  def reject_customers
+  def withdraw
   end
 
     private
