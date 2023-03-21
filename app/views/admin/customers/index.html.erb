@@ -12,13 +12,19 @@
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
-        <td><%= "#{@id}" %></td>
+        <td><%= customer.id %></td>
         <td>
-          <%= customer.first_name %>
-          <%= customer.last_name %>
+          <!--名前をリンクに変更-->
+          <%= customer.first_name %><%= customer.last_name %>
         </td>
         <td><%= customer.email %></td>
-        <td></td>
+        <td>
+          <% if customer.is_delete == false %>
+           有効
+          <% else %>
+           退会
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
