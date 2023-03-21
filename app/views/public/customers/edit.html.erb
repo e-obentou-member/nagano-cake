@@ -2,7 +2,7 @@
 <table class="table">
 
  <tboody>
-<%= form_with model: @customer  do |f| %>
+<%= form_with model: @customer,url: customers_mypage_path do |f| %>
     <tr>
     <div class="field">
        <th><%= f.label :名前 %></th>
@@ -48,10 +48,12 @@
    </th>
     </div>
     </tr>
-    
+
     <tr>
       <th><%= f.submit '編集内容を保存する', class: "btn btn-success" %></th>
-      <th><%= f.submit '退会する', class: "btn btn-danger"%></th>
+
+      <th><%= link_to '退会する', customers_check_path, class: "btn btn-danger" %>
+       </th>
     </tr>
 
 </tbody>
