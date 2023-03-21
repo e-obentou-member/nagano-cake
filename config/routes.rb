@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     resources:orders,only: [:new,:create,:index,:show]
     post 'orders/check'
     get 'orders/done'
-    resources:deliveries,only: [:index, :edit, :update, :update, :destroy]
+    resources:deliveries,only: [:index, :edit, :create, :update, :destroy]
   end
 
   namespace :admin do
