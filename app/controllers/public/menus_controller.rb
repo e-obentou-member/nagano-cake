@@ -32,10 +32,5 @@ class Public::MenusController < ApplicationController
   end
 
 
-  private
-    def cart_item_params
-        params.require(:cart_item).permit(:menu_id, :count)
-    end
-
 end
 
