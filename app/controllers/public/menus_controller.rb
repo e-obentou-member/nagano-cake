@@ -1,6 +1,6 @@
 class Public::MenusController < ApplicationController
   def index
-    # @menus = Menu.all
+    @menus = Menu.all
     # @menus = Menu.page(params[:page]).per(8)
   end
 
@@ -8,6 +8,7 @@ class Public::MenusController < ApplicationController
     # @menu = Menu.find(params[:id])
     # @quantity = params[:quantity] || 1
   end
+
 
   def create
     @cart_item = current_customer.cart_items.new(cart_item_params)
@@ -31,9 +32,5 @@ class Public::MenusController < ApplicationController
   end
 
 
-  private
-    def cart_item_params
-        params.require(:cart_item).permit(:menu_id, :count)
-    end
-
 end
+
