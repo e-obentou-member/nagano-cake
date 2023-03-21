@@ -5,6 +5,8 @@ class Admin::CustomersController < ApplicationController
   end
 
   def show
+    @customers = Customer.all
+    @id = params[:id]
   end
 
   def edit
