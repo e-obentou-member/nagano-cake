@@ -6,6 +6,6 @@ class Public::MenusController < ApplicationController
 
   def show
     # @menu = Menu.find(params[:id])
-    @quantity = params[:quantity] || 1
+    # @quantity = params[:quantity] || 1
   end
 end
