@@ -19,6 +19,6 @@
 
 <!--ページネーション 後ほど見直し-->
 <%=# paginate @menus,
-      previous_label: '< Prev', next_label: 'Next >',
+      previous_label: <'Prev', next_label: 'Next >',
       inner_window: 1, outer_window: 0,
       params: { controller: 'menus', action: 'index' } %>
