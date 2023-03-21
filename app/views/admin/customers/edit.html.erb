@@ -42,14 +42,21 @@
         <tr>
           <td>会員ステータス</td>
           <td>
-            <% if customer.is_delete == false %>
-             有効
+            <% if @customer.is_delete == false %>
+              <%= f.check_box :is_delete, checked: true, checked_value: false %>
+               有効
+              <%= f.check_box :is_delete, checked_value: true %>
+               退会
             <% else %>
-             退会
+              <%= f.check_box :is_delete, checked_value: false %>
+               有効
+              <%= f.check_box :is_delete, checked: true, checked_value: false %>
+               退会
             <% end %>
           </td>
         </tr>
     </table>
+    <%= f.submit '変更を保存', class: 'btn btn-success' %>
   <% end %>
 <% end %>
 <!--編集画面-->
