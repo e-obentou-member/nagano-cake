@@ -1,23 +1,56 @@
 <h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
 
-<!--<div class="position-relative">-->
-<!--  <img src="app/asset/images/no_image.jpg" class="img-fluid" alt="準備中です">-->
-<!--  <div class="position-absolute top-0 start-0">-->
-    <p>
-      ようこそ、ながのCAKEへ！<br>
-      このサイトは、ケーキ販売のECサイトになります。<br>
-      会員でない方も商品の閲覧はできますが、</ br>
-      購入には会員登録が必要になります。<br>
-    </p>
-<!--  </div>-->
-<!--</div>-->
+<div class='container px-5 px-0'>
+  <div class='row'>
+    <div class='col--3'>
+      <p>ジャンル検索</p>
+      <!--< @genres.each do |genre| %>-->
+        <!--<= genre.name %>-->
+      <!--< end %>-->
+    </div>
 
-<h3>新着商品</h3>
-<!--< @menus.each do |menu| %>-->
-<!--  <= image_tag menu.get_image(90, 60) %>-->
-<!--  <= menu.name %>-->
-<!--  <div>￥<= menu.tax_in_price %></div>-->
-<!--< end %>-->
+    <div class='col-8 offset-1'>
+      <div class="top-image">
+        テキスト
+        <%= image_tag 'no_image.jpg', alt:"準備中です", class:"img-fluid", style:"width: 500px; height: 300px;" %>
 
-<%= link_to "すべての商品を見る", menus_path %>
+        <!--<div class="position-absolute top-50 start-50 translate-middle">-->
+          <p>
+            ようこそ、ながのCAKEへ！<br>
+            このサイトは、ケーキ販売のECサイトになります。<br>
+            会員でない方も商品の閲覧はできますが、</ br>
+            購入には会員登録が必要になります。<br>
+          </p>
+
+      </div>
+    </div>
+  </div>
+
+  <div class='row'>
+    <h3>新着商品</h3>
+    <!--< @menus.each do |menu| %>-->
+    <!--  <= image_tag menu.get_image(90, 60) %>-->
+    <!--  <= menu.name %>-->
+    <!--  <div>￥<= menu.tax_in_price %></div>-->
+    <!--< end %>-->
+
+  </div>
+      <%= link_to "すべての商品を見る>", menus_path %>
+
+
+<div class="jumbotron"
+       style="background:url('assets/no_image.jpg');
+              background-size:cover;
+              background-color:rgba(255,255,255,0.7);
+              background-blend-mode:lighten;">
+    <h1 class="display-4">ようこそ、ながのCAKEへ！</h1>
+    <p><br>
+    このサイトは、ケーキ販売のECサイトになります。<br>
+    会員でない方も商品の閲覧は出来ますが、<br>
+    購入には会員登録が必要になります。</p>
+  </div>
+
+</div>
+
+
+
