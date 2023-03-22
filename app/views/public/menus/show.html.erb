@@ -7,7 +7,7 @@
 
 <!--商品の販売状況で表示を変える(a)-->
 <% if @menu.is_sale? %>
-  <%= form_with(model: @menu, url: cart_item_path, local: true) do |f| %>
+  <%= form_with(model: @cart_item, url: cart_item_path, local: true) do |f| %>
   <!--ユーザーには見せたくないが取得が必要な情報にhidden_fieldを使う(a)-->
     <%= f.select :count, options_for_select(["個数選択", 1, 2, 3, 4, 5, 6, 7, 8 ,9]), class: "form-control" %>
     <%= f.hidden_field :menu_id, :value => @menu.id %>
