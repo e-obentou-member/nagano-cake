@@ -1,2 +1,50 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h3>注文履歴詳細</h3>
+
+<table>
+    <tr>
+      <td>氏名</td>
+      <td>
+        <%= @customer.first_name %>
+        <%= @customer.last_name %>
+      </td>
+    </tr>
+    <tr>
+      <td>注文日</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>配送先</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>支払方法</td>
+      <td></td>
+    </tr>
+    <tr>
+      <!--<td>注文ステータス</td>-->
+      <td></td>
+    </tr>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込み）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>制作ステータス</th>
+      <!--できれば注文ステータス-->
+    </tr>
+  </thead>
+  <tbody>
+    <!--% @orders.each do |customer| %-->
+      <tr>
+        <!--<td>購入日時とリンクの設定</td>-->
+        <!--<td>購入者</td>-->
+        <!--<td>注文個数</td>-->
+        <!--できれば注文ステータス-->
+      </tr>
+    <!--% end %-->
+  </tbody>
+</table>

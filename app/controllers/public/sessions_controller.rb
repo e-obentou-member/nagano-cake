@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
+  before_action :reject_inactive_customer, only: [:create]
   # before_action :customer_state, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
@@ -18,6 +19,18 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
+  def reject_inactive_customer
+    @customer = current_customer
+    if @customer
+      if @customer.valid_password?(params[:customer][:password]) && !@customer.is_delete
+        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください"
+        redirect_to new_customer_session_path
+      else
+        flash[:notice] = "項目を入力してください"
+      
+      end
+    end
+  end
 
   protected
 
