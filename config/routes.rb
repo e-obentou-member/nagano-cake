@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
 
-  # デバイスの記述がかぶっていたからルートのエラーが出ていたので
-  # コメントアウトしました。
-  # また、デバイス関連のるーとが下だと、カスタマーのところでかぶっちゃうから
-  # 上に移動しました。
-
- # 顧客用
+  # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -22,8 +17,6 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'homes/about'
     resources:menus, only: [:index, :show]
-    # resources:registrations, only: [:new, :edit]
-    # resources:sessions, only: [:new, :create, :destroy]
     resources:customers, only: [:show, :edit, :update]
     get 'customers/check'
     patch 'customers/withdraw'
@@ -35,9 +28,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :admin do
-    # resources:sessions,only:[:new, :create, :destroy]
     get "homes/top"
-    # root to: 'homes#top'
     resources:menus,only:[:new, :index, :show, :edit, :update]
     resources:genres,only: [:index, :create, :edit, :update]
     resources:customers,only:[:index, :show, :edit, :update]
@@ -48,7 +39,6 @@ Rails.application.routes.draw do
 
 
 
-  #devise_for :customers
-  #devise_for :admins
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
