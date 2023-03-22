@@ -7,6 +7,6 @@ class OrderDetail < ApplicationRecord
     wating_for_production: 1,
     under_production: 2,
     production_completed: 3
-}
+  }
   
 end
