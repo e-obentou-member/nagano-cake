@@ -6,15 +6,15 @@ class Public::DeliveriesController < ApplicationController
     if @delivery_new.save
       redirect_to deliveries_path
     else
-      @deliveries = Delivery.all
       @customer = current_customer
+      @deliveries = @customer.deliveries
       render :index
     end
   end
 
   def index
     @customer = current_customer
-    @deliveries = Delivery.all
+    @deliveries = @customer.deliveries
     @delivery_new = Delivery.new
   end
 
