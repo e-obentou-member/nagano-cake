@@ -2,6 +2,8 @@
   <%= @customer.first_name %><%= @customer.last_name %>さんの会員詳細
 </h2>
 
+<%= flash[:notice] %>
+
 <table>
     <tr>
       <td>会員ID</td>
@@ -52,4 +54,8 @@
 
 <!--編集するボタン-->
 <%= link_to "編集する", edit_admin_customer_path(@customer), class: 'btn btn-success' %>
+
 <!--注文履歴一覧を見るボタン-->
+<%= link_to "注文一覧を見る", admin_path(@customers), class: 'btn btn-primary' %>
+
+<!--ページネーション-->

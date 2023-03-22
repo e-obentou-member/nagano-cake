@@ -9,29 +9,42 @@
       </td>
     </tr>
     <tr>
-      <td>郵便番号</td>
-      <td><%= @customer.postcode %></td>
+      <td>注文日</td>
+      <td></td>
     </tr>
     <tr>
-      <td>住所</td>
-      <td><%= @customer.address %></td>
+      <td>配送先</td>
+      <td></td>
     </tr>
     <tr>
-      <td>電話番号</td>
-      <td><%= @customer.telephone_number %></td>
+      <td>支払方法</td>
+      <td></td>
     </tr>
     <tr>
-      <td>メールアドレス</td>
-      <td><%= @customer.email %></td>
+      <!--<td>注文ステータス</td>-->
+      <td></td>
     </tr>
+</table>
+
+<table>
+  <thead>
     <tr>
-      <td>会員ステータス</td>
-      <td>
-        <% if @customer.is_delete == false %>
-         有効
-        <% else %>
-         退会
-        <% end %>
-      </td>
+      <th>商品名</th>
+      <th>単価（税込み）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>制作ステータス</th>
+      <!--できれば注文ステータス-->
     </tr>
+  </thead>
+  <tbody>
+    <!--% @orders.each do |customer| %-->
+      <tr>
+        <!--<td>購入日時とリンクの設定</td>-->
+        <!--<td>購入者</td>-->
+        <!--<td>注文個数</td>-->
+        <!--できれば注文ステータス-->
+      </tr>
+    <!--% end %-->
+  </tbody>
 </table>
