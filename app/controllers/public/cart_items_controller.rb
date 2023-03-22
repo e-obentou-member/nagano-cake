@@ -1,8 +1,10 @@
 class Public::CartItemsController < ApplicationController
+    before_action :authenticate_customer!
+
 
   def index
     # @cart_items = current_customer.cart_items.all
-    @cart_items = current_customer.all
+    @cart_items = current_customer.cart_items
   end
 
   def create
