@@ -8,16 +8,26 @@
 
       <div class="form-group">商品名 <%= @menu.name %></div>
 
-      商品説明
-      <td><%= @menu.info %>
+      <div class="form-group">
+       商品説明
+      <%= @menu.info %>
+      </div>
+      <div class="form-group">
       税込価格(税抜価格)
       <%= @menu.tax_in_price %>
-      <%= @menu.non_tax_price.to_s(:delimited) %> 円
+      (<%= @menu.non_tax_price.to_s(:delimited) %>) 円
+      </div>
+      <div class="form-group">
       ジャンル
       <%= @menu.genre.name %>
+      </div>
+      <div class="form-group">
       販売ステータス
       <%= @menu.is_sale %>
+      </div>
+      <div class="form-group">
       <%= link_to "編集する", edit_admin_menu_path, class: "btn btn-success" %>
+      </div>
 
   </div>
  </div>

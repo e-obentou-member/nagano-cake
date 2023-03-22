@@ -3,7 +3,7 @@
    <div class="col-md-4 offset-md-3">
     <h4>商品新規登録</h4>
 
-       <%= form_with model: @menu, url: admin_menus_path, method: :post, local: true do |f| %>
+       <%= form_with model: @menu, local: true do |f| %>
           <%= f.label :商品画像 %>
           <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*" %><br>
           <%= f.label :商品名 %>
