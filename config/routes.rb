@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     get '/' => 'homes#top'
     resources:menus,only:[:new, :index, :create, :show, :edit, :update]
     resources:genres,only: [:index, :create, :edit, :update]
-    resources:customer,only:[:index, :show, :edit, :update]
+    resources:customers,only:[:index, :show, :edit, :update]
     resources:orders,only:[:show, :update]
     resources:oder_details,only:[:update]
   end
