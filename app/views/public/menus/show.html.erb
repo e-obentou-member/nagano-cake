@@ -1,13 +1,2 @@
 <h1>Public::Menus#show</h1>
-
-<%#= image_tag @menus.get_image(90, 60) %>
-<%#= @menu.name %>
-<%#= @menu.info %>
-<div>￥<%#= @menu.tax_in_price %>(税込)</div>
-
-<!--個数選択-->
-<%= form_tag menus_path, class: "form-inline" do %>
-  <%= select_tag :quantity, options_for_select(["個数選択", 1, 2, 3, 4, 5]), class: "form-control" %>
-<% end %>
-
-<%= link_to "カートに入れる", cart_items_path, class: "btn btn-success" %>
+<p>Find me in app/views/public/menus/show.html.erb</p>
