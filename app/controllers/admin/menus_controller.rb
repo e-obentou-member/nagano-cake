@@ -24,7 +24,7 @@ class Admin::MenusController < ApplicationController
   def update
     @menu = Menu.find(params[:id])
     @menu.update(menu_params)
-    redirect_to adminmenu_path(@menu.id)
+    redirect_to admin_menu_path(@menu.id)
   end
 
   private
