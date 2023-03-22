@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     # resources:sessions,only:[:new, :create, :destroy]
-    get "homes/top"
+    get '/' => 'homes#top'
     # root to: 'homes#top'
     resources:menus,only:[:new, :index, :create, :show, :edit, :update]
     resources:genres,only: [:index, :create, :edit, :update]

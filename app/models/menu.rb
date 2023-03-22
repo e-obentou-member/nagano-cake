@@ -4,7 +4,7 @@ class Menu < ApplicationRecord
   has_many :order_details
   belongs_to :genre
 
-  #belongs_to :top_page
+
 
   has_one_attached :image
 
@@ -15,7 +15,7 @@ class Menu < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
-
+　#税込価格の計算k
   def tax_in_price
      (self.non_tax_price * 1.1).round
   end
