@@ -43,7 +43,12 @@
         <!--<td>購入日時とリンクの設定</td>-->
         <!--<td>購入者</td>-->
         <!--<td>注文個数</td>-->
-        <!--できれば注文ステータス-->
+        <td>
+          <!--%= form_with(model: @order, url: admins_order_path, local: true, class: "form_row") do |f| %>
+            %= f.select :order_status, Order.order_statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6" %>
+            %= f.submit "更新" %>
+          % end %>-->
+        </td>
       </tr>
     <!--% end %-->
   </tbody>
