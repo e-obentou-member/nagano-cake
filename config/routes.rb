@@ -28,9 +28,9 @@ Rails.application.routes.draw do
 
   scope module: :admin do
     # resources:sessions,only:[:new, :create, :destroy]
-    get '/adimn' => 'homes#top'
+    get '/' => 'homes#top'
     # root to: 'homes#top'
-    resources:menus,only:[:new, :index, :show, :edit, :update]
+    resources:menus,only:[:new, :index, :create, :show, :edit, :update]
     resources:genres,only: [:index, :create, :edit, :update]
     resources:customer,only:[:index, :show, :edit, :update]
     resources:orders,only:[:show, :update]
