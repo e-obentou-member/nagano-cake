@@ -1,2 +1,29 @@
-<h1>Public::Deliveries#edit</h1>
-<p>Find me in app/views/public/deliveries/edit.html.erb</p>
+<%= form_with model: @delivery do |f| %>
+
+<table class="table">
+  <tbody>
+     <tr>
+   <div class="field">
+       <th><%= f.label :郵便番号（ハイフンなし） %></th>
+       <th><%=  f.text_field :postcode, class: "form-control", autofocus: true %></th>
+        </div>
+     </tr>
+
+       <tr>
+    <div class="field">
+       <th><%= f.label :住所 %></th>
+       <th><%=  f.text_field :address, class: "form-control" %></th>
+    </div>
+     </tr>
+
+
+    <tr>
+    <div class="field">
+       <th><%= f.label :宛名 %></th>
+       <th><%= f.text_field :name, class: "form-control" %></th>
+      <th><%= f.submit "変更内容を保存", class: "btn btn-success" %></th>
+    </div>
+      </tr>
+  </tbody>
+  <% end %>
+</div>
