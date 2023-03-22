@@ -1,5 +1,10 @@
 class Public::CartItemsController < ApplicationController
 
+  def index
+    # @cart_items = current_customer.cart_items.all
+    @cart_items = current_customer.all
+  end
+
   def create
     @cart_item = current_customer.cart_items.new(cart_item_params)
 
@@ -21,9 +26,10 @@ class Public::CartItemsController < ApplicationController
     end
   end
 
-  def index
-    @cart_items = current_customer.cart_items.all
+  def update
   end
+
+
 
   def destroy_all
   end
