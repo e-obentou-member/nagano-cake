@@ -10,16 +10,18 @@
     <div class='col-7'>
       <table>
         <tr>
-          <td><h3>商品一覧<//h3></td>
+          <td>商品一覧</td>
           <!--ジャンル検索の場合は[ケーキ一覧]のように表記を変える(a)-->
           <td>全O件</td>
         </tr>
         <% @menus.each do |menu| %>
           <div class="row">
             <div class="col-md-4">
-              <%= image_tag menu.get_image(60, 30) %>
+              <%= link_to menu_path(menu.id) do %>
+                <%= image_tag menu.get_image(60, 30) %>
+              <% end %>
               <%= menu.name %>
-              <div>￥<%=  %></div>
+              <div>￥<%= menu.non_tax_price %></div>
             </div>
           </div>
         <% end %>
