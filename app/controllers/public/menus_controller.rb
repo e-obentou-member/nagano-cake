@@ -6,7 +6,8 @@ class Public::MenusController < ApplicationController
 
   def show
     @menu = Menu.find(params[:id])
-    @quantity = params[:quantity] || 1
+    @count = params[:count] || 1
+    @cart_item = CartItem
   end
 
 
