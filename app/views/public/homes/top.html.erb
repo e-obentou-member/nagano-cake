@@ -5,9 +5,9 @@
 
     <div class='col--3'>
       <p>ジャンル検索</p>
-      <!--< @genres.each do |genre| %>-->
-        <!--<= genre.name %>-->
-      <!--< end %>-->
+      <% @genres.each do |genre| %>
+        <%= genre.name %>
+      <% end %>
     </div>
 
     <div class='col-8 offset-1'>
@@ -25,11 +25,13 @@
 
       <div class='row'>
         <h3>新着商品</h3>
-        <!--< @menus.each do |menu| %>-->
-        <!--  <= image_tag menu.get_image(90, 60) %>-->
-        <!--  <= menu.name %>-->
-        <!--  <div>￥<= menu.tax_in_price %></div>-->
-        <!--< end %>-->
+        <% @menus.each do |menu| %>
+          <div class="col-md-4">
+            <%= image_tag menu.get_image(90, 60) %>
+            <%= menu.name %>
+            <div>￥<%= menu.tax_in_price %></div>
+          </div>
+        <% end %>
       </div>
     </div>
 

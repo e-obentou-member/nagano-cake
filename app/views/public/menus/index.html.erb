@@ -1,21 +1,31 @@
-<table>
-  <tr>
-    <td><h3>商品一覧<//h3></td>
-    <!--ジャンル検索の場合は[ケーキ一覧]のように表記を変える-->
-    <td>全O件</td>
-  </tr>
-</table>
+<div class='container px-5 px-0'>
 
-
-<!--admin/menusで@menus定義でき次第解除-->
-<%# @menus.each do |menu| %>
-  <div class="row">
-    <div class="col-md-4">
-      <%#= image_tag menu.get_image(60, 30) %>
-      <%#= @menu.name %>
-      <!--<div>￥<%#= menu.tax_in_price %></div>-->
+    <div class='col-3'>
+      <p>ジャンル検索</p>
+      <% @genres.each do |genre| %>
+        <%= genre.name %>
+      <% end %>
     </div>
-  </div>
-<%# end %>
 
-<!--ページネーション 後ほど見直し-->
+    <div class='col-7'>
+      <table>
+        <tr>
+          <td><h3>商品一覧<//h3></td>
+          <!--ジャンル検索の場合は[ケーキ一覧]のように表記を変える(a)-->
+          <td>全O件</td>
+        </tr>
+        <% @menus.each do |menu| %>
+          <div class="row">
+            <div class="col-md-4">
+              <%= image_tag menu.get_image(60, 30) %>
+              <%= @menu.name %>
+              <div>￥<%=  %></div>
+            </div>
+          </div>
+        <% end %>
+      </table>
+    </div>
+    
+</div>
+
+<!--ページネーション 後ほど記述(a)-->
