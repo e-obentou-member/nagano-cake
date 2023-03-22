@@ -1,2 +1,43 @@
 <h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+
+<div class='container px-5 px-0'>
+  <div class='row'>
+
+    <div class='col--3'>
+      <p>ジャンル検索</p>
+      <!--< @genres.each do |genre| %>-->
+        <!--<= genre.name %>-->
+      <!--< end %>-->
+    </div>
+
+    <div class='col-8 offset-1'>
+      <div class="jumbotron"
+             style="background:url('assets/no_image.jpg');
+                    background-size:cover;
+                    background-color:rgba(255,255,255,0.7);
+                    background-blend-mode:lighten;">
+          <h5 class="display-8">ようこそ、ながのCAKEへ！</h5>
+          <p><br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧は出来ますが、<br>
+          購入には会員登録が必要になります。</p>
+      </div>
+
+      <div class='row'>
+        <h3>新着商品</h3>
+        <!--< @menus.each do |menu| %>-->
+        <!--  <= image_tag menu.get_image(90, 60) %>-->
+        <!--  <= menu.name %>-->
+        <!--  <div>￥<= menu.tax_in_price %></div>-->
+        <!--< end %>-->
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<%= link_to "すべての商品を見る>", menus_path %>
+
+
+
+

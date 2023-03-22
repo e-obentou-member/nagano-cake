@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2023_03_19_053530) do
   end
 
   create_table "cart_items", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "menu_id"
     t.integer "count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -71,7 +73,7 @@ ActiveRecord::Schema.define(version: 2023_03_19_053530) do
     t.string "postcode", null: false
     t.string "address", null: false
     t.string "telephone_number", null: false
-    t.boolean "is_delete", default: false
+    t.boolean "is_delete", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -82,6 +84,7 @@ ActiveRecord::Schema.define(version: 2023_03_19_053530) do
     t.string "postcode"
     t.string "address"
     t.string "name"
+    t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -93,9 +96,9 @@ ActiveRecord::Schema.define(version: 2023_03_19_053530) do
   end
 
   create_table "menus", force: :cascade do |t|
+    t.integer "genre_id"
     t.string "name"
     t.text "info"
-    t.integer "tax_in_price"
     t.integer "non_tax_price"
     t.boolean "is_sale"
     t.datetime "created_at", precision: 6, null: false
@@ -103,6 +106,8 @@ ActiveRecord::Schema.define(version: 2023_03_19_053530) do
   end
 
   create_table "order_details", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "menu_id"
     t.integer "tax_in_price"
     t.integer "make_status"
     t.integer "count"
@@ -111,6 +116,7 @@ ActiveRecord::Schema.define(version: 2023_03_19_053530) do
   end
 
   create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
     t.integer "postage"
     t.integer "payment_way"
     t.integer "status"
