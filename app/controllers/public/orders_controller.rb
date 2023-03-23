@@ -4,36 +4,11 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     
     # 注文情報入力画面に表示させるのに使う
-    @addresses = Address.all
+    # @addresses = Address.all
   end
-
-  def index
-      @customer = current_customer
-      @orders = @customer.orders
-  end
-
-  def show
-      @menu = Menu.find(params[:menu_id])
-      @order = @menu.order.new
-  end
-
-  def check
-    @order = Order.new(order_params)
-    if params[:order][:address_number] == "1"
-        # view で定義している address_number が"1"だったときにこの処理を実行します
-# form_with で @order で送っているので、order に紐付いた address_number となります。以下同様です
-# この辺の紐付けは勉強不足なので gem の pry-byebug を使って確認しながら行いました
-    @order.name = current_customer.name
-    @order.address = current_customer.customer_address
-    
-    elsif params[:order][:address_number] == "2"
-        
-    
-    @newaddress = Order.new(order_params)
-    @newaddress.customer_id = current_customer.id
-  end
-
-# 注文を確定します
+  
+  
+  # 注文を確定します
   def create
     cart_items = current_customer.cart_items.all
     # ログインユーザーのカートアイテムをすべて取り出す
@@ -67,6 +42,61 @@ class Public::OrdersController < ApplicationController
   end
 
 
+  def index
+      @customer = current_customer
+      @orders = @customer.orders
+  end
+
+  def show
+      # @menu = Menu.find(params[:menu_id])
+      # @order = @menu.order.new
+  end
+
+  def check
+    @order = Order.new(order_params)
+    if params[:order][:address_number] == "1"
+        # view で定義している address_number が"1"だったときにこの処理を実行します
+# form_with で @order で送っているので、order に紐付いた address_number となります。以下同様です
+# この辺の紐付けは勉強不足なので gem の pry-byebug を使って確認しながら行いました
+    @order.name = current_customer.name
+    @order.address = current_customer.customer_address
+    
+    # （w）deliveryがないサイトで見ているため、もしかしたら記述が変わるかもしれない
+    
+    elsif params[:order][:address_number] == "2"
+        # view で定義している address_number が"2"だったときにこの処理を実行します
+        if Address.exists?(name: params[:order][:registered])
+            # registered は viwe で定義しています
+            @order.name = Address.find(params[:order][:registered]).name
+            @order.address = Address.find(params[:order][:registered]).address
+        else
+            render :new
+            # 既存のデータを使っていますのでありえないですが、万が一データが足りない場合は new を render します
+        end
+        
+    elsif params[:order][:address_number] == "3"
+            
+            address_new = current_customer.addresses.new(address_params)
+            if address_new.save # 確定前(確認画面)で save してしまうことになりますが、私の知識の限界でした
+            else
+            render :new
+            #  ここに渡ってくるデータはユーザーで新規追加してもらうので、入力不足の場合は new に戻します
+            end
+    else
+            redirect_to request.referer
+    end
+        @cart_items = current_customer.cart_items.all# カートアイテムの情報をユーザーに確認してもらうために使用します
+        @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
+        # 合計金額を出す処理です sum_price はモデルで定義したメソッドです
+  end
+    
+    # 分からないからコメントアウトしてます
+#     @newaddress = Order.new(order_params)
+#     @newaddress.customer_id = current_customer.id
+#   end
+
+
+
 
   def done
   end
@@ -74,6 +104,12 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:postcode, :address, :name)
+    #   合計金額のカラムが入っているらしい？（ｗ）
+    params.require(:order).permit(:postcode, :address, :name, :amount)
   end
+  
+ def address_params
+    params.require(:order).permit(:name, :address)
+ end
+  
 end

@@ -15,6 +15,4 @@ class Order < ApplicationRecord
   # 3 = preparing_to_ship: "発送準備中"
   # 4 = shipped: "発送済み"
   enum order_status: {waiting_payment: 0, confirmation_of_payment: 1, in_production: 2, preparing_to_ship: 3, shipped: 4}
-  
-  
 end
