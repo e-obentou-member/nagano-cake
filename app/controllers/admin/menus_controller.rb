@@ -4,7 +4,7 @@ class Admin::MenusController < ApplicationController
   end
 
   def index
-    @menus = Menu.all
+    @menus = Menu.all.page(params[:page]).per(1)
   end
 
   def create
