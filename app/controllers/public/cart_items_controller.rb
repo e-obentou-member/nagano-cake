@@ -5,6 +5,7 @@ class Public::CartItemsController < ApplicationController
   def index
     # @cart_items = current_customer.cart_items.all
     @cart_items = current_customer.cart_items
+    subtotal = menu.tax_in_price * count
   end
 
   def create
@@ -21,14 +22,22 @@ class Public::CartItemsController < ApplicationController
 
     # もしカート内に「同じ」商品がない場合は通常の保存処理(a)
     elsif @cart_item.save
-    　@cart_items = current_customer.cart_items.all
-    　render 'index'
+      @cart_items = current_customer.cart_items.all
+      render 'index'
     else　# 保存できなかった場合(a)
       render 'index'
     end
   end
 
   def update
+  end
+
+  def destroy
+
+    cart_item = CartItem.find(params[:id])
+    cart_item.destroy
+    redirect_to request.referer
+
   end
 
 
