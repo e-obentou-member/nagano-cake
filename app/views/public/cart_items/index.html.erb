@@ -22,10 +22,8 @@
       <tbody>
         <% @cart_items.each do |cart_item|  %>
         <tr>
-          <td><%= image_tag get_image(30, 20) %></td>
-          <td><%= cart_items.name  %></td>
-          <td><%= %></td>
-
+          <td><%= image_tag get_image(30, 20) %></td
+          <td><%= cart_items.@tax_in_price %></td>
           <td>
             <%= form_tag cart_items_path, class: "form-inline" do %>
               <%= select_tag :quantity, options_for_select(["個数選択", 1, 2, 3, 4, 5]), class: "form-control" %>
