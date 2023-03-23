@@ -4,7 +4,7 @@
   <div class="row">
     <p>ショッピングカート</p>
     <div class="col-md-4 offset-md-9 mb-4">
-      <%= link_to "カートを空にする", cart_items_destroy_all_path, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger btn-sm" %>
+      <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger btn-sm" %>
     </div>
   </div>
 
