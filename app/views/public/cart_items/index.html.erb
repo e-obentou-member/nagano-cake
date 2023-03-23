@@ -4,7 +4,7 @@
   <div class="row">
     <p>ショッピングカート</p>
     <div class="col-md-4 offset-md-9 mb-4">
-      <%#= link_to "カートを空にする", cart_items_destroy_all_path, class:"btn btn-danger btn-sm" %>
+      <%= link_to "カートを空にする", cart_items_destroy_all_path, class:"btn btn-danger btn-sm" %>
     </div>
   </div>
 
@@ -20,23 +20,21 @@
         </tr>
       </thead>
       <tbody>
-        <%# @cart_items.each do |cart_item|  %>
+        <% @cart_items.each do |cart_item|  %>
         <tr>
-          <td><%#= image_tag get_image(30, 20) %></td>
-          <td><%#= cart_items.name  %></td>
+          <td><%= image_tag get_image(30, 20) %></td
           <td><%#= cart_items.@tax_in_price %></td>
-
           <td>
-            <%#= form_tag cart_items_path, class: "form-inline" do %>
-              <%#= select_tag :quantity, options_for_select(["個数選択", 1, 2, 3, 4, 5]), class: "form-control" %>
-            <%# end %>
+            <%= form_tag cart_items_path, class: "form-inline" do %>
+              <%= select_tag :quantity, options_for_select(["個数選択", 1, 2, 3, 4, 5]), class: "form-control" %>
+            <% end %>
           </td>
 
           <td>小計</td>
           <td>
-            <%#= link_to "削除する", cart_item_path, method: :delete, class: "btn btn-danger" %>
+            <%= link_to "削除する", cart_item_path, method: :delete, class: "btn btn-danger" %>
           </td>
-          <%# end %>
+          <% end %>
         </tr>
       </tbody>
     </table>
@@ -46,7 +44,7 @@
     </div>
     <table class="table table-bordered col-md-4">
       <tr>
-        <td>合計金額</td><td><%#= @total_price %></td>
+        <td>合計金額</td><td><%#=  %></td>
       </tr>
     </table>
 
