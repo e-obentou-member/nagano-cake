@@ -1,10 +1,10 @@
 <div class='container px-5 px-0'>
-
+  <div class="row">
     <div class='col-3'>
       <p>ジャンル検索</p>
-      <%# @genres.each do |genre| %>
-        <%#= genre.name %>
-      <%# end %>
+      <% @genres.each do |genre| %>
+        <div><%= genre.name %></div>
+      <% end %>
     </div>
 
     <div class='col-7'>
@@ -12,22 +12,22 @@
         <tr>
           <td>商品一覧</td>
           <!--ジャンル検索の場合は[ケーキ一覧]のように表記を変える(a)-->
-          <td>全O件</td>
-        </tr>
+          <td>(全<%= @menus.count %>件)</td>
+        <tr>
         <% @menus.each do |menu| %>
-          <div class="row">
-            <div class="col-md-4">
+          <tr>
+            <td>
               <%= link_to menu_path(menu.id) do %>
-                <%= image_tag menu.get_image(60, 30) %>
+                <%= image_tag menu.get_image(300, 200) %>
               <% end %>
-              <%= menu.name %>
-              <div>￥<%= menu.non_tax_price %></div>
-            </div>
-          </div>
+              <div><%= menu.name %></div>
+              <div>￥<%= menu.tax_in_price %></div>
+            </td>
+          </tr>
         <% end %>
       </table>
     </div>
-
+  </div>
 </div>
 
 <!--ページネーション 後ほど記述(a)-->
