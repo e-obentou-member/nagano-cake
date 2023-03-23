@@ -1,7 +1,6 @@
 <p>注文情報入力</p>
 
-<!--orders_check_path→orders_pathに変更(a)-->
-<%= form_with model: @order, url: orders_path, local: true do |f| %>
+<%= form_with model: @order, url: orders_check_path, local: true do |f| %>
 
   <p>支払方法</p>
   <div class="form-group">

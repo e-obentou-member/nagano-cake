@@ -20,7 +20,7 @@ class Public::OrdersController < ApplicationController
         order_detail.order_id = @order.id
         order_detail.count = cart.count
         order_detail.tax_in_price = cart.menu.tax_in_price
-        # カート情報を削除するので item との紐付けが切れる前に保存します
+        # カート情報を削除しmenusとの紐付けが切れる前に保存
         order_detail.save
       end
       redirect_to orders_done_path
@@ -55,18 +55,17 @@ class Public::OrdersController < ApplicationController
     # viewで定義している:addressが"2"だったとき
       # if Delivery.exists?(name: params[:order][:registered])
         @delivery = Delivery.find(params[:order][:delivery_id])
-        # registered は viwe で定義しています
         # @order.postcode = current_customer.postcode
         # @order.name = Address.find(params[:order][:name]).name
         # @order.address = Address.find(params[:order][:address]).address
       # else
       #   render :new
       # end
-       
+
       @order.name = @delivery.name
       @order.address = @delivery.address
       @order.postcode = @delivery.postcode
-      
+
     elsif params[:order][:address_select] == "3"
       delivery_new = current_customer.delivery.new(delivery_params)
       if delivery_new.save
