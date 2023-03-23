@@ -22,11 +22,11 @@ Rails.application.routes.draw do
     get 'customers/mypage' => 'customers#show'
     get 'customers/check'
     patch 'customers/withdraw'
-    resources:cart_items, only: [:index, :update, :destroy]
+    resources:cart_items, only: [:index, :update, :destroy, :create]
     delete 'cart_items/destroy_all'
-    resources:orders,only: [:new,:create,:index,:show]
     post 'orders/check'
     get 'orders/done'
+     resources:orders,only: [:new,:create,:index,:show]
     resources:deliveries,only: [:index, :edit, :create, :update, :destroy]
   end
 
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     resources:genres,only: [:index, :create, :edit, :update]
     resources:customers,only:[:index, :show, :edit, :update]
     resources:orders,only:[:show, :update]
-    resources:oder_details,only:[:show, :update]
+    resources:oder_details,only:[:update]
   end
 
 
