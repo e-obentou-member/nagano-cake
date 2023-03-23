@@ -9,8 +9,13 @@ class Admin::MenusController < ApplicationController
 
   def create
     @menu = Menu.new(menu_params)
-    @menu.save!
-    redirect_to admin_menus_path
+    if @menu.save
+     redirect_to admin_menus_path(@menu.id)
+     flash[:notice] = "Menu was successfully created."
+    else
+      @menus = Menu.all
+      render:index
+    end
   end
 
   def show
@@ -23,8 +28,12 @@ class Admin::MenusController < ApplicationController
 
   def update
     @menu = Menu.find(params[:id])
-    @menu.update(menu_params)
-    redirect_to admin_menu_path(@menu.id)
+    if @menu.update(menu_params)
+     redirect_to admin_menu_path(@menu.id)
+     flash[:notice] = "Menu was successfully destroyed."
+    else
+      render:edit
+    end
   end
 
   private
