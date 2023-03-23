@@ -23,17 +23,17 @@
       <tbody>
         <% @cart_items.each do |cart_item|  %>
           <tr>
-            <td><%= image_tag cart_item.get_image(300, 200) %></td>
+            <td><%= image_tag cart_item.menu.get_image(300, 200) %></td>
             <td><%= cart_item.menu.name %></td>
             <td><%= cart_item.menu.tax_in_price %></td>
             <td>
-              <%= form_tag cart_items_path, class: "form-inline" do %>
-                <%= select_tag :count, options_for_select(["個数選択", 1, 2, 3, 4, 5]), class: "form-control" %>
-                <%= submit_tag "変更", class:"btn btn-success" %>
+              <%= form_with model: cart_item, url: cart_item_path(cart_item.id), class: "form-inline" do |f| %>
+                <%= f.select :count, *[1..10], class: "form-control" %>
+                <%= f.submit "変更", class:"btn btn-success" %>
               <% end %>
             </td>
 
-            <td><%=  %></td>
+            <td><%= cart_item.subtotal_price %></td>
             <td>
               <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger" %>
             </td>
@@ -47,7 +47,8 @@
     </div>
     <table class="table table-bordered col-md-4">
       <tr>
-        <td>合計金額</td><td><%#=  %></td>
+        <!--引数の:の前に&をつけるとメソッドの呼出ができる(a)-->
+        <td>合計金額</td><td><%= @cart_items.sum(&:subtotal_price) %></td>
       </tr>
     </table>
 
