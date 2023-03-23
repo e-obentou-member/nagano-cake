@@ -2,7 +2,7 @@
 
 <!--＃form_withはデフォルトがpostメソッド(a)-->
 
-<%= form_with @order, url: orders_check_path, local: true do |f| %>
+<%= form_with model: @order, url: orders_check_path, local: true do |f| %>
 
 <p>支払方法</p>
   <div class="form-group">
@@ -26,13 +26,13 @@
     <div class="form-check">
       <%= f.radio_button :address_number, 1 %>
       <%= f.label :address_number_1, "ご自身の住所"%>
-      <%= @customer.customer_address %>
+      <%= @customer.address %>
     </div>
 
     <div class="form-check">
       <%= f.radio_button :address_number, 2 %>
       <%= f.label :address_number_2, "登録済み住所から選択" %>
-      <%= f.collection_select :registered, current_customer.addresses.all, :id, :address %>
+      <%= f.collection_select :registered, @customer.deliveries, :id, :address %>
     </div>
 
     <div class="form-check">
