@@ -30,17 +30,18 @@
 
 
 
+  <p>支払方法  <%= @order.payment_method_i18n %></p>
 
+
+  <p>お届け先</p>
+  <%= @order.postcode %> <%= @order.address %>
+  <%= @order.name %>
+
+  <div class="d-flex justify-content-center">
     <div class="row">
-    <div>支払方法</div>
-    <%= @order.payment_way %>
-    <div>お届け先</div>
-    <%= @order.postcode %>
-    <%= @order.address %>
-    <%#= @order.customer.first_name %>
-    <%#= @order.customer.last_name %>
-
-
+      <%= link_to "注文を確定する", orders_done_path, class:"btn btn-success" %>
+    </div>
+  </div>
 
 
 
