@@ -14,28 +14,34 @@
           <th>数量</th>
           <th>小計</th>
         </tr>
+        <% @cart_items.each do |cart| %>
+          <td><%= cart.menu.name %></td>
+          <td><%= (cart.menu.tax_in_price).to_s(:delimited) %><td>　<!-- 金額 -->
+          <td><%= cart.count %></td> <!-- 個数 -->
+          <td><%= cart.subtotal_price %></td> <!-- 小計 -->
+        <% end %>
       </thead>
-      <!--下記でレコード表示-->
-  
+
+
     </table>
     <table class="table col-md-6">
-      <td>送料</td><td></td>
-      <td>商品合計</td><td></td>
-      <td>請求金額</td><td></td>
+      <td>送料</td><td><%= @postage %></td>
+      <td>商品合計</td><td><%= @total_price + @postage %></td>
+      <td>請求金額</td><td><%= @total_price.to_s(:delimited) %></td>
     </table>
   </div>
-    
-    
+
+
     <!--支払方法とお届け先、[注文を確定する]ボタンはpublic/oedersブランチで記述-->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
   </div>
 </div>
