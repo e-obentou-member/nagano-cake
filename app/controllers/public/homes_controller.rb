@@ -3,7 +3,7 @@ class Public::HomesController < ApplicationController
     # menus.rbでアソシエーション記述済(a)
     @menus = Menu.all
     @manus = Menu.order(created_at: :desc)
-    # @genres = Menu.genre_id
+    @genres = Genre.all
   end
 
   def about
