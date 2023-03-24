@@ -4,7 +4,7 @@ class Order < ApplicationRecord
 
   # 支払方法
   # クレジットカード→0、credit_card　、銀行振り込み→1,transfer
-  enum payment_method: {credit: 0, bank_transfer: 1}
+  enum payment_ways: {credit: 0, bank_transfer: 1}
   # 注文ステータス
 
 
@@ -17,7 +17,9 @@ class Order < ApplicationRecord
   enum order_status: {waiting_payment: 0, confirmation_of_payment: 1, in_production: 2, preparing_to_ship: 3, shipped: 4}
 
   def payment_way_i18n
-    Order.payment_way_i18n[self.payment_way]
+    Order.payment_ways_i18n[self.payment_way]
   end
+
+
 
 end

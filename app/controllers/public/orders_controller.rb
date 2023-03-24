@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
 
   # 注文を確定
   def create
-    @order = current_customer.orders.new(params.require(:order).permit(:delivery_date, :payment_method, :address_id))
+    @order = current_customer.orders.new(params.require(:order).permit(:delivery_date, :payment_way, :address_id))
     cart_items = current_customer.cart_items.all
     # ログインユーザーのカートアイテムをすべて取り出す
     @order = current_customer.orders.new(order_params)
@@ -62,7 +62,7 @@ class Public::OrdersController < ApplicationController
         # @delivery = Delivery.find(params[:order][:address_display])
         # @delivery = Delivery.find_by(address_display: params[:order][&:address_display])
         @delivery = Delivery.where("postcode || ' ' || address || ' ' || name LIKE ?", "〒#{params[:order][:address_display]}%").first
- 
+
         # @order.postcode = current_customer.postcode
         # @order.name = Address.find(params[:order][:name]).name
         # @order.address = Address.find(params[:order][:address]).address
@@ -70,11 +70,15 @@ class Public::OrdersController < ApplicationController
       #   render :new
       # end
 
-    if @delivery
-      @order.name = @delivery.name
-      @order.address = @delivery.address
-      @order.postcode = @delivery.postcode
-    end
+      if @delivery
+        @order.name = @delivery.name
+        @order.address = @delivery.address
+        @order.postcode = @delivery.postcode
+      end
+       # @orderをインスタンス変数として定義
+      @payment_way = @order.payment_way
+      @postcode = @order.postcode
+      @address = @order.address
 
     elsif params[:order][:address_select] == "3"
       # delivery_new = current_customer.delivery.new(delivery_params)
@@ -90,9 +94,13 @@ class Public::OrdersController < ApplicationController
       redirect_to request.referer
     end
 
-      @cart_items = current_customer.cart_items.all  #カートアイテムの情報をユーザーに確認してもらうために使用します
-      @total_price =  @cart_items.sum(&:subtotal_price)  #合計金額
-      @postage = 800  #送料
+    @delivery = Delivery.new(delivery_params)
+    @delivery.customer_id = current_customer.id
+    @delivery.save
+
+    @cart_items = current_customer.cart_items.all  #カートアイテムの情報をユーザーに確認してもらうために使用します
+    @total_price =  @cart_items.sum(&:subtotal_price)  #合計金額
+    @postage = 800  #送料
   end
 
 
@@ -104,7 +112,7 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     #   合計金額のカラムが入っているらしい？（ｗ）
-    params.require(:order).permit(:payment_way, :postcode, :address, :name, :amount, :payment_method)
+    params.require(:order).permit(:payment_way, :postcode, :address, :name, :amount)
   end
 
   def delivery_params
