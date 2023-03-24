@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <!--下記でレコード表示-->
-  
+
     </table>
     <table class="table col-md-6">
       <td>送料</td><td></td>
@@ -24,19 +24,33 @@
       <td>請求金額</td><td></td>
     </table>
   </div>
-    
-    
+
+
     <!--支払方法とお届け先、[注文を確定する]ボタンはpublic/oedersブランチで記述-->
+
+
+    <% @cart_items.each do |cart| %>
+      <%= cart.menu.name %> <!-- 商品名 -->
+      <%= (cart.menu.tax_in_price).to_s(:delimited) %>　<!-- 金額 -->
+      <%= cart.count %> <!-- 個数 -->
+      <%= cart.subtotal_price %> <!-- 小計 -->
+    <% end %>
+    <td>送料</td><td>800</td>
+    <td>商品合計</td><td><%= @total_price + @postage %></td>
+    <%= @total_price.to_s(:delimited) %> <!-- お買い物の合計金額 -->
+
     <div class="row">
     <div>支払方法</div>
-    <%= @orders.payment_way %>
+    <%= @order.payment_way %>
     <div>お届け先</div>
-    <%= @orders. %>
-    
-    
-    
-    
-    
-    
+    <%= @order.postcode %>
+    <%= @order.address %>
+    <%#= @order.customer.first_name %>
+    <%#= @order.customer.last_name %>
+
+
+
+
+
   </div>
 </div>

@@ -54,7 +54,11 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:address_select] == "2"
     # viewで定義している:addressが"2"だったとき
       # if Delivery.exists?(name: params[:order][:registered])
-        @delivery = Delivery.find(params[:order][:delivery_id])
+        # @delivery = Delivery.find(params[:order][:delivery_id])
+        # @delivery = Delivery.find(params[:order][:address_display])
+        # @delivery = Delivery.find_by(address_display: params[:order][&:address_display])
+        @delivery = Delivery.where("postcode || ' ' || address || ' ' || name LIKE ?", "〒#{params[:order][:address_display]}%").first
+
         # @order.postcode = current_customer.postcode
         # @order.name = Address.find(params[:order][:name]).name
         # @order.address = Address.find(params[:order][:address]).address
@@ -62,9 +66,11 @@ class Public::OrdersController < ApplicationController
       #   render :new
       # end
 
+    if @delivery
       @order.name = @delivery.name
       @order.address = @delivery.address
       @order.postcode = @delivery.postcode
+    end
 
     elsif params[:order][:address_select] == "3"
       delivery_new = current_customer.delivery.new(delivery_params)
@@ -80,6 +86,7 @@ class Public::OrdersController < ApplicationController
 
       @cart_items = current_customer.cart_items.all# カートアイテムの情報をユーザーに確認してもらうために使用します
       @total_price =  @cart_items.sum(&:subtotal_price)
+      @postage = 800
   end
 
 
@@ -90,7 +97,7 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     #   合計金額のカラムが入っているらしい？（ｗ）
-    params.require(:order).permit(:payment_way, :postcode, :address, :name, :amount)
+    params.require(:order).permit(:payment_way, :postcode, :address, :name, :amount, :payment_method)
   end
 
  def delivery_params
