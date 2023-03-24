@@ -1,12 +1,12 @@
-<h1>Public::Orders#check</h1>
+
 <!--containerと注文情報確認テーブルはpublic/cart_itemsブランチで記述-->
-<div class="container">
+<div class="container mt-5">
   <div class="row">
     <p>注文情報確認画面</p>
   </div>
 
   <div class="row">
-    <table class="table col-md-6">
+    <table class="table table-bordered col-md-8">
       <thead>
         <tr>
           <th>商品名</th>
@@ -14,20 +14,32 @@
           <th>数量</th>
           <th>小計</th>
         </tr>
+      </thead>
+      <tbody>
         <% @cart_items.each do |cart| %>
+        <tr>
           <td><%= cart.menu.name %></td>
-          <td><%= (cart.menu.tax_in_price).to_s(:delimited) %><td>　<!-- 金額 -->
+          <td><%= cart.menu.tax_in_price %></td>
           <td><%= cart.count %></td> <!-- 個数 -->
           <td><%= cart.subtotal_price %></td> <!-- 小計 -->
+        </tr>
         <% end %>
-      </thead>
-
 
     </table>
-    <table class="table col-md-6">
-      <td>送料</td><td><%= @postage %></td>
-      <td>商品合計</td><td><%= @total_price + @postage %></td>
-      <td>請求金額</td><td><%= @total_price.to_s(:delimited) %></td>
+
+    <table class="table table-bordered col-md-3 ml-5">
+      <tr>
+        <td scope="row">送料</td>
+        <td><%= @postage %></td>
+      </tr>
+      <tr>
+        <td scope="row">商品合計</td>
+        <td><%= @total_price.to_s(:delimited) %></td>
+      </tr>
+      <tr>
+        <td scope="row">請求金額</td>
+        <td><%= @total_price + @postage %></td>
+      </tr>
     </table>
   </div>
 
@@ -49,7 +61,6 @@
       <%= link_to "注文を確定する", orders_done_path, class:"btn btn-success" %>
     </div>
   </div>
->>>>>>> origin/develop
 
 
 
