@@ -20,6 +20,9 @@ class Order < ApplicationRecord
     Order.payment_ways_i18n[self.payment_way]
   end
 
+  validates :postcode, presence: true
+  validates :address, presence: true
+  validates :name, presence: true
 
 
 end
