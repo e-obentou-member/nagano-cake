@@ -49,8 +49,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.payment_way = params[:order][:payment_way]  #支払方法取得
 
-
-
     if params[:order][:address_select] == "1"
     # viewで定義している:addressが"1"だったとき
       @order.name = current_customer.first_name
@@ -64,7 +62,7 @@ class Public::OrdersController < ApplicationController
         # @delivery = Delivery.find(params[:order][:address_display])
         # @delivery = Delivery.find_by(address_display: params[:order][&:address_display])
         @delivery = Delivery.where("postcode || ' ' || address || ' ' || name LIKE ?", "〒#{params[:order][:address_display]}%").first
-
+ 
         # @order.postcode = current_customer.postcode
         # @order.name = Address.find(params[:order][:name]).name
         # @order.address = Address.find(params[:order][:address]).address
@@ -101,6 +99,7 @@ class Public::OrdersController < ApplicationController
   def done
   end
 
+
   private
 
   def order_params
@@ -108,8 +107,8 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:payment_way, :postcode, :address, :name, :amount, :payment_method)
   end
 
- def delivery_params
+  def delivery_params
     params.require(:order).permit(:name, :address, :postcode)
- end
+  end
 
 end

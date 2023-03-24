@@ -47,21 +47,21 @@
     <!--支払方法とお届け先、[注文を確定する]ボタンはpublic/oedersブランチで記述-->
 
 
-
-
   <p>支払方法  <%= @order.payment_method_i18n %></p>
 
 
   <p>お届け先</p>
-  <%= @order.postcode %> <%= @order.address %>
+  <%= @order.postcode %> <%= @order.address %>  <!--1の配送先-->
   <%= @order.name %>
+  <%#= @delivery.address_display %>   <!--2の配送先-->
+
+
 
   <div class="d-flex justify-content-center">
     <div class="row">
       <%= link_to "注文を確定する", orders_done_path, class:"btn btn-success" %>
     </div>
   </div>
-
 
 
   </div>
