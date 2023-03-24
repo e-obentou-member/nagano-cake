@@ -16,11 +16,18 @@
       <%= @menu.info %>
       <div>￥<%= @menu.tax_in_price %>(税込)</div>
 
-
-
-
-
-
+     <!--以下の[カートに入れる]ボタンはpublic/cart_itemsブランチ！！-->
+     <!--商品の販売状況で表示を変える(a)-->
+      <% if @menu.is_sale? %>
+        <%= form_with(model: @cart_item, url: cart_items_path, local: true) do |f| %>
+        <!--ユーザーには見せたくないが取得が必要な情報にhidden_fieldを使う(a)-->
+          <%= f.select :count, options_for_select(["個数選択", 1, 2, 3, 4, 5, 6, 7, 8 ,9]), class: "form-control" %>
+          <%= f.hidden_field :menu_id, :value => @menu.id %>
+          <%= f.submit "カートに入れる", class:"btn btn-success" %>
+        <% end %>
+      <% else %>
+        <div class="btn btn-info">売り切れ中です</div>
+      <% end %>
 
     </div>
   </div>

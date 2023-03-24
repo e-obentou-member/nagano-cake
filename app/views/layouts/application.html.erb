@@ -47,7 +47,7 @@
               <% elsif  admin_signed_in? %>
               <!--管理者がログインしている場合-->
                <li>
-                 <%= link_to admin_menues_path, class: 'nav-link text-dark' do %>
+                 <%= link_to admin_menus_path, class: 'nav-link text-dark' do %>
                  <i class="fas fa-link"></i> 商品一覧
                <% end %>
                </li>
@@ -62,7 +62,7 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to genres_path, class: 'nav-link text-dark' do %>
+                <%= link_to admin_genres_path, class: 'nav-link text-dark' do %>
                   <i class="fas fa-link"></i> ジャンル一覧
                 <% end %>
               </li>
