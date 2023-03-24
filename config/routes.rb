@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources:cart_items, only: [:index, :update, :destroy, :create]
     post 'orders/check'
     get 'orders/done'
-     resources:orders,only: [:new,:create,:index,:show]
+    resources:orders,only: [:new,:create,:index,:show]
     resources:deliveries,only: [:index, :edit, :create, :update, :destroy]
   end
 
