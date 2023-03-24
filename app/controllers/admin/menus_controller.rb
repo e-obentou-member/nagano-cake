@@ -4,7 +4,7 @@ class Admin::MenusController < ApplicationController
   end
 
   def index
-    @menus = Menu.all.page(params[:page]).per(1)
+    @menus = Menu.all.page(params[:page]).per(2)
   end
 
   def create
@@ -30,7 +30,7 @@ class Admin::MenusController < ApplicationController
     @menu = Menu.find(params[:id])
     if @menu.update(menu_params)
      redirect_to admin_menu_path(@menu.id)
-     flash[:notice] = "Menu was successfully destroyed."
+     flash[:notice] = "Menu was successfully updateed."
     else
       render:edit
     end

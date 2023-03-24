@@ -1,16 +1,8 @@
 <div class='container px-5 px-sm-0'>
- <div>
+ <div style="color:limegreen;">
     <%= flash[:notice] %>
   </div>
  <h4>商品一覧</h4>
- <% if @menu.errors.any? %>
-  <%= @menu.errors.count %>件のエラーが発生しました
-  <ul>
-    <% @menu.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
- <% end %>
  <div class='row'>
   <div class='col-md-12'>
    <div class="d-flex justify-content-end">
