@@ -59,8 +59,5 @@ gem 'devise'
 gem 'kaminari','~> 1.2.1'
 gem "enum_help"
 gem 'jp_prefecture'
-<<<<<<< HEAD
-gem 'ransack'
-=======
 gem 'rails-i18n'
->>>>>>> origin/develop
+gem 'ransack'
