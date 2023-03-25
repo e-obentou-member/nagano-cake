@@ -11,10 +11,10 @@ class Admin::MenusController < ApplicationController
     @menu = Menu.new(menu_params)
     if @menu.save
      redirect_to admin_menus_path(@menu.id)
-     flash[:notice] = "Menu was successfully created."
+     flash[:notice] = "新規登録確認しました。"
     else
       @menus = Menu.all
-      render:index
+      render:new
     end
   end
 
@@ -30,7 +30,7 @@ class Admin::MenusController < ApplicationController
     @menu = Menu.find(params[:id])
     if @menu.update(menu_params)
      redirect_to admin_menu_path(@menu.id)
-     flash[:notice] = "Menu was successfully updateed."
+     flash[:notice] = "変更を保存しました。"
     else
       render:edit
     end
