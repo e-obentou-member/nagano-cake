@@ -1,7 +1,7 @@
 <div class='container px-5 px-0'>
   <div class="row">
 
-    <div class="card mt-5">
+    <div class="card mt-5 col-2">
       <div class="card-body", style="height: 40px;">
         <p class="card-title">ジャンル検索</p>
         <% @genres.each do |genre| %>
@@ -10,11 +10,11 @@
       </div>
     </div>
 
-    <div class='col-4 mt-5'>
-      <%= image_tag @menu.get_image(300, 200) %>
+    <div class='col-4 mt-5 ml-5'>
+      <%= image_tag @menu.get_image(360, 240) %>
     </div>
 
-    <div class='col-5 mt-5'>
+    <div class='col-5 mt-5 ml-3'>
       <h5><%= @menu.name %></h5>
       <%= @menu.info %>
       <div>￥<%= @menu.tax_in_price %>(税込)</div>
@@ -24,9 +24,11 @@
       <% if @menu.is_sale? %>
         <%= form_with(model: @cart_item, url: cart_items_path, local: true) do |f| %>
         <!--ユーザーには見せたくないが取得が必要な情報にhidden_fieldを使う(a)-->
-          <%= f.select :count, options_for_select(["個数選択", 1, 2, 3, 4, 5, 6, 7, 8 ,9]), class: "form-control" %>
-          <%= f.hidden_field :menu_id, :value => @menu.id %>
-          <%= f.submit "カートに入れる", class:"btn btn-success btn-sm" %>
+          <div class="mt-5">
+            <%= f.select :count, options_for_select(["個数選択", 1, 2, 3, 4, 5, 6, 7, 8 ,9]), class: "form-control" %>
+            <%= f.hidden_field :menu_id, :value => @menu.id %>
+            <%= f.submit "カートに入れる", class:"btn btn-success btn-sm" %>
+          </div>
         <% end %>
       <% else %>
         <div class="btn btn-info">売り切れ中です</div>
