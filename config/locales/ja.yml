@@ -24,3 +24,6 @@ ja:
       menu:
         is_sale: "販売ステータス"
 
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
