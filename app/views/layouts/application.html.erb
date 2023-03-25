@@ -95,10 +95,6 @@
                 </li>
               <% end %>
             </ul>
-            <%= search_form_for @search, url: menus_path do |f| %>
-            <%= f.search_field :name_cont, placeholder: 'Search' %>
-            <%= f.submit '検索' %>
-            <% end %>
           </div>
         </div>
       </nav>
