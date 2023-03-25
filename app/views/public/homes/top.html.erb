@@ -32,7 +32,7 @@
           <% count += 1 %>
           <div class="col-md-3">
             <%= link_to menu_path(menu.id) do %>
-              <div><%= image_tag menu.get_image(160, 1200) %></div>
+              <div><%= image_tag menu.get_image(160, 120) %></div>
             <% end %>
             <div><%= menu.name %></div>
             <div>￥<%= menu.tax_in_price %></div>

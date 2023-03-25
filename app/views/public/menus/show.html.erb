@@ -28,11 +28,11 @@
             <%= f.select :count, *[1..99], { include_blank: '個数選択'}, { class: "select"} %>
             <%#= f.select :count, options_for_select(["個数選択", 1, 2, 3, 4, 5,]), class: "form-control" %>
             <%= f.hidden_field :menu_id, :value => @menu.id %>
-            <%= f.submit "カートに入れる", class:"btn btn-success" %>
+            <%= f.submit "カートに入れる", class:"btn btn-success btn-sm" %>
           </div>
         <% end %>
       <% else %>
-        <div class="btn btn-info">売り切れ中です</div>
+        <div class="btn btn-secondary btn-sm mt-5">売り切れ中です</div>
       <% end %>
 
     </div>
