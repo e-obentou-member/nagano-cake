@@ -9,7 +9,7 @@ class Menu < ApplicationRecord
   validates :info, presence: true
   validates :non_tax_price, presence: true
   validates :genre_id, presence: true
-  validates :is_sale, presence: true
+  validates :is_sale, inclusion: {in: [true, false]}
 
   has_one_attached :image
 
