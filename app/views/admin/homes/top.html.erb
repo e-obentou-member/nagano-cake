@@ -10,14 +10,14 @@
     </tr>
   </thead>
   <tbody>
-    <!--% @orders.each do |customer| %-->
+    <% @orders.each do |order| %>
       <tr>
-        <!--<td>購入日時とリンクの設定</td>-->
-        <!--<td>購入者</td>-->
-        <!--<td>注文個数</td>-->
+        <td><%= order.created_at %></td>
+        <td>購入者</td>
+        <td>注文個数</td>
         <!--できれば注文ステータス-->
       </tr>
-    <!--% end %-->
+    <% end %>
   </tbody>
 </table>
 
