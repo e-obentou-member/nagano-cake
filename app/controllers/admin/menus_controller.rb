@@ -10,10 +10,9 @@ class Admin::MenusController < ApplicationController
   def create
     @menu = Menu.new(menu_params)
     if @menu.save
-     redirect_to admin_menus_path(@menu.id)
+     redirect_to admin_menus_path
      flash[:notice] = "新規登録確認しました。"
     else
-      @menus = Menu.all
       render:new
     end
   end
