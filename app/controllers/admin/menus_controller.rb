@@ -5,13 +5,17 @@ class Admin::MenusController < ApplicationController
   end
 
   def index
-    @menus = Menu.all
+    @menus = Menu.all.page(params[:page]).per(2)
   end
 
   def create
     @menu = Menu.new(menu_params)
-    @menu.save!
-    redirect_to admin_menus_path
+    if @menu.save
+     redirect_to admin_menus_path
+     flash[:notice] = "新規登録確認しました。"
+    else
+      render:new
+    end
   end
 
   def show
@@ -24,8 +28,12 @@ class Admin::MenusController < ApplicationController
 
   def update
     @menu = Menu.find(params[:id])
-    @menu.update(menu_params)
-    redirect_to admin_menu_path(@menu.id)
+    if @menu.update(menu_params)
+     redirect_to admin_menu_path(@menu.id)
+     flash[:notice] = "変更を保存しました。"
+    else
+      render:edit
+    end
   end
 
   private

@@ -53,8 +53,6 @@ ActiveRecord::Schema.define(version: 2023_03_19_053530) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "menu_id"
     t.integer "count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -66,14 +64,14 @@ ActiveRecord::Schema.define(version: 2023_03_19_053530) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "first_name_kana", null: false
-    t.string "last_name_kana", null: false
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "postcode", null: false
-    t.string "address", null: false
-    t.string "telephone_number", null: false
-    t.boolean "is_delete", default: false, null: false
+    t.string "first_name_kana"
+    t.string "last_name_kana"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "postcode"
+    t.string "address"
+    t.string "telephone_number"
+    t.boolean "is_delete"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -84,7 +82,6 @@ ActiveRecord::Schema.define(version: 2023_03_19_053530) do
     t.string "postcode"
     t.string "address"
     t.string "name"
-    t.integer "customer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -106,8 +103,6 @@ ActiveRecord::Schema.define(version: 2023_03_19_053530) do
   end
 
   create_table "order_details", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "menu_id"
     t.integer "tax_in_price"
     t.integer "make_status"
     t.integer "count"
@@ -116,7 +111,6 @@ ActiveRecord::Schema.define(version: 2023_03_19_053530) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
     t.integer "postage"
     t.integer "payment_way"
     t.integer "status"
