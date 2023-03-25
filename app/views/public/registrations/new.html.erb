@@ -48,7 +48,7 @@
 
      <tr>
     <div class="field">
-    <th><%= f.label :email %></th>
+    <th><%= f.label :メールアドレス %></th>
     <th><%= f.email_field :email, autocomplete: "email", class: "form-control" %>
    </th>
     </div>
@@ -56,19 +56,19 @@
 
      <tr>
     <div class="field">
-    <th><%= f.label :password %>
+    <th><%= f.label :パスワード %>
     <% if @minimum_password_length %>
-    (<%= @minimum_password_length %> characters minimum)
+    (<%= @minimum_password_length %> 文字以上)
     <% end %></th>
-    <th><%= f.password_field :password, autocomplete: "new-password" %>
+    <th><%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
     </th>
     </div>
     </tr>
 
      <tr>
      <div class="field">
-    <th><%= f.label :password_confirmation %></th>
-    <th><%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <th><%= f.label :パスワード（確認用） %></th>
+    <th><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
      </th>
      </div>
      </tr>
@@ -82,4 +82,6 @@
 </table>
 
 <% end %>
+<h5>既に登録お済の方</h5>
+
 <%= render "public/shared/links" %>
