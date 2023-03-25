@@ -10,17 +10,23 @@ class Public::OrdersController < ApplicationController
 
   # 注文を確定
   def create
-    @order = current_customer.orders.new(params.require(:order).permit(:delivery_date, :payment_way, :address_id))
+    # @order = current_customer.orders.new(params.require(:order).permit(:delivery_date, :payment_way, :address_id))
+
     cart_items = current_customer.cart_items.all
-    # ログインユーザーのカートアイテムをすべて取り出す
+    # ログインユーザーのカート内商品をすべて取り出す
     @order = current_customer.orders.new(order_params)
+    # 引数で取得したカート内商品と支払方法・配送先データ？　がひとつの注文IDとして格納される
+
     if @order.save
-      cart_items.each do |cart|
+
+      cart_items.each do |cart_item|
+        # cart_itemは商品一種類
         order_detail = OrderDetail.new
-        order_detail.menu_id = cart.menu_id
-        order_detail.order_id = @order.id
-        order_detail.count = cart.count
-        order_detail.tax_in_price = cart.menu.tax_in_price
+        # order_detailインスタンスを生成
+        order_detail.menu_id = cart_item.menu_id
+        order_detail.order_id = @order.id  #注文ID
+        order_detail.count = cart_item.count
+        order_detail.tax_in_price = cart_item.menu.tax_in_price
         # カート情報を削除しmenusとの紐付けが切れる前に保存
         order_detail.save
       end
@@ -35,16 +41,21 @@ class Public::OrdersController < ApplicationController
 
 
   def index
-    @customer = current_customer
-    # @orders = @customer.orders
     if current_customer
-      @orders = current_customer.orders.includes(:order_details).order(created_at: :desc)
+      @orders = current_customer.orders
+      # createアクションでDBにsaveしたデータを取得する(a)
     end
   end
 
   def show
+    if current_customer
+      @orders = current_customer.orders
+      # createアクションでDBにsaveしたデータを取得する(a)
+    end
     # @menu = Menu.find(params[:menu_id])
     # @order = @menu.order.new
+    @order = Order.find(params[:id])
+    @postage = 800  #送料
   end
 
   def check
@@ -63,8 +74,8 @@ class Public::OrdersController < ApplicationController
         # @delivery = Delivery.find(params[:order][:delivery_id])
         # @delivery = Delivery.find(params[:order][:address_display])
         # @delivery = Delivery.find_by(address_display: params[:order][&:address_display])
-        @delivery = Delivery.where("postcode || ' ' || address || ' ' || name LIKE ?", "〒#{params[:order][:address_display]}%").first
-
+        # @delivery = Delivery.where("postcode || ' ' || address || ' ' || name LIKE ?", "〒#{params[:order][:address_display]}%").first
+        @delivery = Delivery.find(params[:order][:delivery_id])
         # @order.postcode = current_customer.postcode
         # @order.name = Address.find(params[:order][:name]).name
         # @order.address = Address.find(params[:order][:address]).address
@@ -83,24 +94,24 @@ class Public::OrdersController < ApplicationController
       @address = @order.address
 
     elsif params[:order][:address_select] == "3"
-      # delivery_new = current_customer.delivery.new(delivery_params)
-      delivery_new = current_customer.deliveries.new(delivery_params)
+      # delivery_new = current_customer.deliveries.new(delivery_params)
 
-      if delivery_new.save
-        redirect_to orders_check_path
-      else
-        render :new
-      end
+      # if delivery_new.save
+        # redirectはGETに遷移 注意！
+        # redirect_to orders_check_path
+      # else
+        # render :new
+      # end
 
     else
       redirect_to request.referer
     end
 
-    @delivery = Delivery.new(delivery_params)
-    @delivery.customer_id = current_customer.id
-    @delivery.save
+    # @delivery = Delivery.new(delivery_params)
+    # @delivery.customer_id = current_customer.id
+    # @delivery.save
 
-    @cart_items = current_customer.cart_items.all  #カートアイテムの情報をユーザーに確認してもらうために使用します
+    @cart_items = current_customer.cart_items.all  #カートアイテムの情報 ユーザー確認用
     @total_price =  @cart_items.sum(&:subtotal_price)  #合計金額
     @postage = 800  #送料
   end
@@ -114,11 +125,8 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     #   合計金額のカラムが入っているらしい？（ｗ）
-    params.require(:order).permit(:payment_way, :postcode, :address, :name, :amount)
-  end
+    params.require(:order).permit(:payment_way, :postcode, :address, :name, :amount, :customer_id, :postage)
 
-  def delivery_params
-    params.require(:order).permit(:name, :address, :postcode)
   end
 
 end

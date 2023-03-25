@@ -4,7 +4,7 @@ class Order < ApplicationRecord
 
   # 支払方法
   # クレジットカード→0、credit_card　、銀行振り込み→1,transfer
-  enum payment_ways: {credit: 0, bank_transfer: 1}
+  enum payment_way: {credit: 0, bank_transfer: 1}
   # 注文ステータス
 
 
