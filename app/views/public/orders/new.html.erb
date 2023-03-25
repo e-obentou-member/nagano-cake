@@ -1,3 +1,5 @@
+<div class="container mt-5">
+
 <p>注文情報入力</p>
 
 <%= form_with model: @order, url: orders_check_path, local: true do |f| %>
@@ -5,10 +7,10 @@
   <p>支払方法</p>
   <div class="form-group">
     <!--enum記述、後ほど見直し(a)-->
-    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-    <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit] %>
-    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-    <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:bank_transfer]%>
+    <%= f.radio_button :payment_way, Order.payment_ways.key(0) %>
+    <%= f.label :payment_way_credit_card, Order.payment_ways_i18n[:credit] %>
+    <%= f.radio_button :payment_way, Order.payment_ways.key(1) %>
+    <%= f.label :payment_way_transfer, Order.payment_ways_i18n[:bank_transfer]%>
   </div>
 
   <h3>お届け先</h3>
@@ -31,7 +33,7 @@
     </div>
 
     <div class="form-check">
-      <%= f.radio_button :address_select, 3 %>
+      <%#= f.radio_button :address_select, 3 %>
       <%= f.label :address_3,"新しいお届け先" %>
       <table>
         <tr>
@@ -55,3 +57,5 @@
   </div>
 
 <% end %>
+
+</div>

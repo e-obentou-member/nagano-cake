@@ -1,19 +1,20 @@
-<h1>Public::Menus#show</h1>
-
 <div class='container px-5 px-0'>
   <div class="row">
-    <div class='col-3'>
-      <p>ジャンル検索</p>
-      <% @genres.each do |genre| %>
-        <div><%= genre.name %></div>
-      <% end %>
+
+    <div class="card mt-5 col-2">
+      <div class="card-body", style="height: 40px;">
+        <p class="card-title">ジャンル検索</p>
+        <% @genres.each do |genre| %>
+          <div class="card-text"><%= genre.name %></div>
+        <% end %>
+      </div>
     </div>
 
-    <div class='col-4'>
-      <%= image_tag @menu.get_image(600, 400) %>
+    <div class='col-4 mt-5 ml-5'>
+      <%= image_tag @menu.get_image(360, 240) %>
     </div>
 
-    <div class='col-5'>
+    <div class='col-5 mt-5 ml-3'>
       <h5><%= @menu.name %></h5>
       <%= @menu.info %>
       <div>￥<%= @menu.tax_in_price %>(税込)</div>

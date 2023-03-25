@@ -1,20 +1,20 @@
-<h1>Public::Homes#top</h1>
-
 <div class='container px-5 px-0'>
   <div class='row'>
 
-    <div class='col--3'>
-      <p>ジャンル検索</p>
-      <%# @genres.each do |genre| %>
-        <%#= genre.name %>
-      <%# end %>
+    <div class="card mt-5 col-2">
+      <div class="card-body", style="height: 40px;">
+        <p class="card-title">ジャンル検索</p>
+        <% @genres.each do |genre| %>
+          <div class="card-text"><%= genre.name %></div>
+        <% end %>
+      </div>
     </div>
 
-    <div class='col-8 offset-1'>
+    <div class='col-8 offset-1 mt-5 '>
       <div class="jumbotron"
-             style="background:url('assets/no_image.jpg');
+             style="background:url('assets/cake-top.jpg');
                     background-size:cover;
-                    background-color:rgba(255,255,255,0.7);
+                    background-color:rgba(255,255,255,0.5);
                     background-blend-mode:lighten;">
           <h5 class="display-8">ようこそ、ながのCAKEへ！</h5>
           <p><br>
@@ -23,22 +23,31 @@
           購入には会員登録が必要になります。</p>
       </div>
 
-      <div class='row'>
-        <h3>新着商品</h3>
+      <div class='row ml-1'>
+        <h4>新着商品</h4>
+      </div>
+      <div class="row">
         <% @menus.each do |menu| %>
           <div class="col-md-4">
-            <%= image_tag menu.get_image(90, 60) %>
-            <%= menu.name %>
-            <div>￥<%= menu.non_tax_price %></div>
+            <%= link_to menu_path(menu.id) do %>
+              <div><%= image_tag menu.get_image(120, 90) %></div>
+            <% end %>
+            <div><%= menu.name %></div>
+            <div>￥<%= menu.tax_in_price %></div>
           </div>
         <% end %>
+
+        <div class="justify-content-end mt-3">
+          <%= link_to "全ての商品を見る>", menus_path %>
+        </div>
+
       </div>
     </div>
+
 
   </div>
 </div>
 
-<%= link_to "すべての商品を見る>", menus_path %>
 
 
 
