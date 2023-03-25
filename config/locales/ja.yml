@@ -18,3 +18,9 @@ ja:
         wating_for_production: "製作待ち"
         under_production: "製作中"
         production_completed: "製作完了"
+
+  activerecord:
+    attributes:
+      menu:
+        is_sale: "販売ステータス"
+
