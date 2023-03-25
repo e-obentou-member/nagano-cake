@@ -24,6 +24,7 @@
           <td><%= cart.subtotal_price %></td> <!-- 小計 -->
         </tr>
         <% end %>
+      </tbody>
 
     </table>
 
@@ -47,20 +48,27 @@
     <!--支払方法とお届け先、[注文を確定する]ボタンはpublic/oedersブランチで記述-->
 
 
-  <p>支払方法  <%= @order.payment_way_i18n %></p>
+  <%#= @order.payment_way_i18n %>
+  <p>支払方法 <%= Order.payment_ways_i18n[@order.payment_way.to_s.to_sym] %></p>
+  <p>お届け先</p>
+    <%= @order.postcode %> <%= @order.address %> <%= @order.name %>
 
-<p>お届け先</p>
-<% if params[:address_select] == "1" %>
-  <%= @order.postcode %> <%= @order.address %> <%= @order.name %>
-<% elsif params[:address_select] == "2" %>
-  <%= @order.postcode %> <%= @order.address %> <%= @order.name %>
-<% elsif params[:address_select] == "3" %>
-  <%= @order.postcode %> <%= @order.address %> <%= @order.name %>
-<% end %>
+  </div>
+</div>
 
 <div class="d-flex justify-content-center">
   <div class="row">
-    <%= link_to "注文を確定する", orders_done_path, class:"btn btn-success" %>
+    <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+    <%= f.hidden_field :customer_id, :value => current_customer.id %>
+    <%= f.hidden_field :postage, :value => @postage %>
+    <%= f.hidden_field :payment_way, :value => @order.payment_way %>
+    <%= f.hidden_field :amount, :value => @total_price + @postage %>
+    <%= f.hidden_field :postcode, :value => @order.postcode %>
+    <%= f.hidden_field :address, :value => @order.address %>
+    <%= f.hidden_field :name, :value => @order.name %>
+
+    <%= f.submit "注文を確定する", class:"btn btn-success" %>
+    <% end %>
   </div>
 </div>
 
