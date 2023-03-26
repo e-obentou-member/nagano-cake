@@ -1,4 +1,7 @@
-<h2>Log in</h2>
+<div class='container px-5 px-0'>
+</br>
+
+<h2>ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
@@ -30,5 +33,8 @@
     <%= f.submit "ログイン", class: "btn btn-info" %>
   </div>
 <% end %>
+</br>
+
 <h5>会員登録がお済でない方</h5>
 <%= render "public/shared/links" %>
+</div>

@@ -1,6 +1,9 @@
+<div class='container px-0'>
+    <div class="row mt-5">
 
-<%= render 'layouts/errors', obj: @delivery %>
-<%= form_with model: @delivery do |f| %>
+        <h3>配送先編集</h3>
+        <%= render 'layouts/errors', obj: @delivery %>
+        <%= form_with model: @delivery do |f| %>
 
 
 <table class="table">
@@ -29,4 +32,8 @@
       </tr>
   </tbody>
   <% end %>
+  </table>
+</div>
+
+</div>
 </div>
