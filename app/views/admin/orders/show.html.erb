@@ -7,10 +7,9 @@
   <div class="row">
     <div class="col-5">
       <table class="table-hover mx-auto">
-        <% @customers.each do |customer| %>
           <tr>
             <td class="pr-5 pb-2">氏名</td>
-            <td><%= customer.first_name %></td>
+            <td><%= @order.customer.first_name %><%= @order.customer.last_name %></td>
           </tr>
           <tr>
             <td class="pr-5 py-2">注文日</td>
@@ -28,7 +27,6 @@
             <!--<td>注文ステータス</td>-->
             <td></td>
           </tr>
-        <% end %>
       </table>
     </div>
   </div>
@@ -46,14 +44,18 @@
           </tr>
         </thead>
         <tbody>
-          <!--% @cart_items.each do |cart| %>-->
             <tr>
-              <!--<td>%= cart.menu.name %></td>-->
-              <!--<td>%= cart.menu.tax_in_price %></td>-->
-              <!--<td>%= cart.count %></td>-->
-              <!--<td>%= cart.subtotal_price %></td>-->
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <%= form_with(model: @order, url: admin_order_path, local: true, class: "form-row") do |f| %>
+                  <%= f.select :make_status, Order.make_statuses_i18n.invert, {prompt: false}, class:"form-control form-control-sm col-6"  %>
+                  <%= f.submit "更新" %>
+                <% end %>
+              </td>
             </tr>
-          <!--% end %>-->
         </tbody>
       </table>
     </div>
