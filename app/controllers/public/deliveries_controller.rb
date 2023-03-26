@@ -1,4 +1,6 @@
 class Public::DeliveriesController < ApplicationController
+  before_action :ensure_delivery, only:[:edit, :update, :destoroy]
+  
 
   def create
     @delivery_new = Delivery.new(delivery_params)
@@ -17,11 +19,7 @@ class Public::DeliveriesController < ApplicationController
     @deliveries = @customer.deliveries
     @delivery_new = Delivery.new
   end
-
-  def show
-     @delivery = Delivery.find(params[:id])
-  end
-
+  
   def edit
      @delivery = Delivery.find(params[:id])
   end
@@ -48,7 +46,13 @@ class Public::DeliveriesController < ApplicationController
     params.require(:delivery).permit(:postcode, :address, :name)
   end
 
-
+def ensure_delivery
+    @deliveries = current_customer.deliveries
+    @delivery = @deliveries.find_by(id: params[:id])
+    # 自分以外のdeliveryの情報合致していないとunlessになる
+      redirect_to deliveries_path unless @delivery
+      # unlessだった場合自分のindexに飛ぶ
+end
 
 
 end
