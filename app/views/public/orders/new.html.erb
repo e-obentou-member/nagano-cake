@@ -6,19 +6,18 @@
 
   <p>支払方法</p>
   <div class="form-group">
-    <!--enum記述、後ほど見直し(a)-->
-    <%= f.radio_button :payment_way, Order.payment_ways.key(0) %>
+    <%= f.radio_button :payment_way, Order.payment_ways.key(0), checked: true %>
     <%= f.label :payment_way_credit_card, Order.payment_ways_i18n[:credit] %>
     <%= f.radio_button :payment_way, Order.payment_ways.key(1) %>
     <%= f.label :payment_way_transfer, Order.payment_ways_i18n[:bank_transfer]%>
   </div>
 
-  <h3>お届け先</h3>
+  <h5>お届け先</h5>
   <div class="form-group">
-    <%= f.label :address %>
+    <%#= f.label :address %>
 
-    <div class="form-check">
-      <%= f.radio_button :address_select, 1 %>
+    <div class="form-check ">
+      <%= f.radio_button :address_select, 1, checked: true %>
       <%= f.label :address_1, "ご自身の住所"%>
       <%= @customer.postcode %>
       <%= @customer.address %>
@@ -42,7 +41,7 @@
         </tr>
         <tr>
           <td>住所</td>
-          <td><%= f.text_area :address %></td>
+          <td><%= f.text_field :address, style: "width: 400px;" %></td>
         </tr>
         <tr>
           <td>宛名</td>
