@@ -13,8 +13,14 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= l order.created_at %></td>
-        <td></td>
-        <td>注文個数</td>
+        <td><%= order.customer.first_name %><%= order.customer.last_name %></td>
+        <td>
+          <% sum = 0 %>
+          <% order.order_details.each do |order_detail| %>
+            <% sum = sum + order_detail.count %>
+          <% end %>
+          <%= sum %>
+        </td>
         <!--できれば注文ステータス-->
       </tr>
     <% end %>
@@ -22,3 +28,4 @@
 </table>
 
 <!--ページネーション-->
+<%= paginate @orders, class: 'mx-2' %>
