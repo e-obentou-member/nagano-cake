@@ -6,16 +6,7 @@ class Order < ApplicationRecord
   # クレジットカード→0、credit_card　、銀行振り込み→1,transfer
   enum payment_way: {credit: 0, bank_transfer: 1}
   # 注文ステータス
-
-
-  # ymlファイルで日本語
-  # 0 = wating_for_payment: "入金待ち"
-  # 1 = confirmation_of_payment: "入金確認"
-  # 2 = in_production: "製作中"
-  # 3 = preparing_to_ship: "発送準備中"
-  # 4 = shipped: "発送済み"
-  enum order_status: {waiting_payment: 0, confirmation_of_payment: 1, in_production: 2, preparing_to_ship: 3, shipped: 4}
-  enum make_status: {not_startable: 0, wating_for_production: 1, under_production: 2, production_completed: 3}
+  enum status: {入金待ち:0, 入金確認:1, 製作中:2, 発送準備中:3, 発送済み:4}
   
   def payment_way_i18n
     Order.payment_ways_i18n[self.payment_way]
