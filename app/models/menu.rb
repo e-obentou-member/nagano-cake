@@ -24,7 +24,7 @@ class Menu < ApplicationRecord
 
 #税込価格k
   def tax_in_price
-     (self.non_tax_price * 1.08).round
+     (self.non_tax_price * 1.1).round
   end
 
 end
