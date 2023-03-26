@@ -5,13 +5,13 @@ class Admin::MenusController < ApplicationController
   end
 
   def index
-    @menus = Menu.all.page(params[:page]).per(2)
+    @menus = Menu.all.page(params[:page]).per(5)
   end
 
   def create
     @menu = Menu.new(menu_params)
     if @menu.save
-     redirect_to admin_menus_path
+     redirect_to admin_menu_path(@menu)
      flash[:notice] = "新規登録確認しました。"
     else
       render:new
