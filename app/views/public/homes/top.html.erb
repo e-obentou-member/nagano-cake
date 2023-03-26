@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <div class='col-8 offset-1 mt-5 '>
+    <div class='col-8 offset-1 mt-5'>
       <div class="jumbotron"
              style="background:url('assets/cake-top.jpg');
                     background-size:cover;
@@ -26,19 +26,26 @@
       <div class='row ml-1'>
         <h4>新着商品</h4>
       </div>
+      <% count = 0 %>
       <div class="row">
         <% @menus.each do |menu| %>
-          <div class="col-md-4">
+          <% count += 1 %>
+          <div class="col-md-3">
             <%= link_to menu_path(menu.id) do %>
-              <div><%= image_tag menu.get_image(120, 90) %></div>
+              <div><%= image_tag menu.get_image(160, 120) %></div>
             <% end %>
             <div><%= menu.name %></div>
             <div>￥<%= menu.tax_in_price %></div>
           </div>
+          <% break if count == 3 %>
         <% end %>
 
-        <div class="justify-content-end mt-3">
-          <%= link_to "全ての商品を見る>", menus_path %>
+        <div class="justify-content-end mt-3 ml-5">
+          <%= link_to menus_path do %>
+            <p>
+              全ての商品<br>を見る>
+            </p>
+          <% end %>
         </div>
 
       </div>

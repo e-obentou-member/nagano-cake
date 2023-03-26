@@ -25,13 +25,14 @@
         <%= form_with(model: @cart_item, url: cart_items_path, local: true) do |f| %>
         <!--ユーザーには見せたくないが取得が必要な情報にhidden_fieldを使う(a)-->
           <div class="mt-5">
-            <%= f.select :count, options_for_select(["個数選択", 1, 2, 3, 4, 5, 6, 7, 8 ,9]), class: "form-control" %>
+            <%= f.select :count, *[1..99], { include_blank: '個数選択'}, { class: "select"} %>
+            <%#= f.select :count, options_for_select(["個数選択", 1, 2, 3, 4, 5,]), class: "form-control" %>
             <%= f.hidden_field :menu_id, :value => @menu.id %>
-            <%= f.submit "カートに入れる", class:"btn btn-success" %>
+            <%= f.submit "カートに入れる", class:"btn btn-success btn-sm" %>
           </div>
         <% end %>
       <% else %>
-        <div class="btn btn-info">売り切れ中です</div>
+        <div class="btn btn-secondary btn-sm mt-5">売り切れ中です</div>
       <% end %>
 
     </div>
