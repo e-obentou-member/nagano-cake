@@ -116,7 +116,7 @@ class Public::OrdersController < ApplicationController
 
   def order_params
     #   合計金額のカラムが入っているらしい？（ｗ）
-    params.require(:order).permit(:payment_way, :postcode, :address, :name, :amount, :customer_id, :postage)
+    params.require(:order).permit(:payment_way, :postcode, :address, :name, :amount, :customer_id, :postage, :status)
 
   end
 

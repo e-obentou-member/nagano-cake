@@ -16,6 +16,7 @@ class Admin::OrdersController < ApplicationController
         order_detail.save
       end
     end
+    flash[:notice] = "変更を保存しました"
     redirect_to admin_order_path
   end
 

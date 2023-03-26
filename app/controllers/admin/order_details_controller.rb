@@ -16,8 +16,10 @@ class Admin::OrderDetailsController < ApplicationController
           @order.status = "発送準備中"
           @order.save
       end
+        flash[:notice] = "変更を保存しました"
         redirect_to admin_order_path(@order_detail.order.id)
     else
+      flash[:notice] = "変更を保存しました"
       redirect_to admin_order_path(@order_detail.order.id)
     end
   end
