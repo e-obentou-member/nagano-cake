@@ -1,6 +1,6 @@
 class Public::MenusController < ApplicationController
   def index
-    @menus = Menu.all
+    # @menus = Menu.all
     @menus = Menu.page(params[:page]).per(8)
     @genres = Genre.all
   end

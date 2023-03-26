@@ -11,15 +11,12 @@
     </div>
 
     <div class='col-9 mt-5'>
-      <table>
-        <tr>
-          <h5>商品一覧(全<%= @menus.count %>件)</h5>
-          <!--ジャンル検索の場合は[ケーキ一覧]のように表記を変える(a)-->
-        </tr>
+        <h5>商品一覧(全<%= @menus.count %>件)</h5>
+        <!--ジャンル検索の場合は[ケーキ一覧]のように表記を変える(a)-->
 
         <div class="row row-cols-2 row-cols-md-4">
           <% @menus.each do |menu| %>
-            <div class="col mb-2">
+            <div class="col mb-2 mt-3">
               <%= link_to menu_path(menu.id) do %>
                 <%= image_tag menu.get_image(160, 120) %>
               <% end %>
@@ -29,9 +26,11 @@
           <% end %>
         </div>
 
-      </table>
     </div>
   </div>
 </div>
 
-<!--ページネーション 後ほど記述(a)-->
+<!--ページネーション(a)-->
+<div class="d-flex justify-content-center">
+ <%= paginate @menus %>
+</div>
