@@ -15,7 +15,8 @@ class Order < ApplicationRecord
   # 3 = preparing_to_ship: "発送準備中"
   # 4 = shipped: "発送済み"
   enum order_status: {waiting_payment: 0, confirmation_of_payment: 1, in_production: 2, preparing_to_ship: 3, shipped: 4}
-
+  enum make_status: {not_startable: 0, wating_for_production: 1, under_production: 2, production_completed: 3}
+  
   def payment_way_i18n
     Order.payment_ways_i18n[self.payment_way]
   end
