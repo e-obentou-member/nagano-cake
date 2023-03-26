@@ -58,6 +58,7 @@
 
 <div class="d-flex justify-content-center">
   <div class="row">
+    <!--ordersテーブルの情報をcreateアクションに送る(a)-->
     <%= form_with model: @order, url: orders_path, method: :post do |f| %>
     <%= f.hidden_field :customer_id, :value => current_customer.id %>
     <%= f.hidden_field :postage, :value => @postage %>
