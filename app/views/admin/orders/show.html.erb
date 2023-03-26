@@ -7,11 +7,10 @@
   <div class="row">
     <div class="col-5">
       <table class="table-hover mx-auto">
+        <% @customers.each do |customer| %>
           <tr>
             <td class="pr-5 pb-2">氏名</td>
-            <td>
-
-            </td>
+            <td><%= customer.first_name %></td>
           </tr>
           <tr>
             <td class="pr-5 py-2">注文日</td>
@@ -29,6 +28,7 @@
             <!--<td>注文ステータス</td>-->
             <td></td>
           </tr>
+        <% end %>
       </table>
     </div>
   </div>
