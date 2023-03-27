@@ -1,4 +1,11 @@
 class ApplicationController < ActionController::Base
+def after_sign_up_path_for(resource)
+ customers_mypage_path(resource)
+end
+def after_sign_in_path_for(resource)
+ customers_mypage_path(resource)
+end
+
 before_action :set_search
 
 def set_search
