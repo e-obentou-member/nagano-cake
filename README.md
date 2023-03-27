@@ -43,11 +43,11 @@ Rails 6.1.7
 ruby  3.1.2
 
 ## インストール
-$ git clone git@github.com:e-obentou-member/nagano-cake.git
-$ cd nagano-cake
-$ rails db:migrate
-$ rails db:seed
-$ bundle install
+$ git clone git@github.com:e-obentou-member/nagano-cake.git<br>
+$ cd nagano-cake<br>
+$ rails db:migrate<br>
+$ rails db:seed<br>
+$ bundle install<br>
 
 ## 作者
 増田 詞音、一ノ瀬亜由美、  新垣  水悠、一瀬 綾花
