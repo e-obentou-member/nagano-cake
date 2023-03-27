@@ -15,9 +15,8 @@
 ## 機能
 ・deviceを使用したログイン機能<br>
 ・ransackを使用したサーチ機能<br>
-
-他の機能はこちらを参照して下さい。<br>
-https://wals.s3-ap-northeast-1.amazonaws.com/curriculum/ec_site/design_documents/ecsite_functions_list.pdf<br>
+・【顧客側】カート機能、注文機能、退会機能<br>
+・【管理者側】ジャンル、顧客詳細、商品追加機能<br>
 
 ## 必要条件
 ER図<br>https://drive.google.com/open?id=1pgDB8ticJ3Z8W7QZpGq_ZkClo1NTPaJr&authuser=mmwanco082%40gmail.com&usp=drive_fs<br>
