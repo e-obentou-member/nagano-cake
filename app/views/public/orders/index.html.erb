@@ -9,6 +9,7 @@
      <td>配送先</td>
      <td>注文商品</td>
      <td>支払金額</td>
+     <td>ステータス</td>
      <td>注文詳細</td>
    </tr>
   </thead>
@@ -27,6 +28,7 @@
           <% end %>
         </td>
         <td><%= order.amount %>円</td>
+        <td><%= order.status %></td>
         <td><%= link_to '表示する', order_path(order.id), class: "btn btn-primary btn-sm" %></td>
       </tr>
     <% end %>
