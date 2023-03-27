@@ -41,7 +41,7 @@ $ rails db:seed<br>
 $ bundle install<br>
 
 ## 作者
-増田 詞音、一ノ瀬亜由美、  新垣  水悠、一瀬 綾花
+まっすー、わんこ、かっきー、あや
 
 
 
